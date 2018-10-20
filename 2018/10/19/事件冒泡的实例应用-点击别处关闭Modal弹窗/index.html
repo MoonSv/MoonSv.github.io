@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的例子可以帮助更好的理解事件冒泡。">
+<meta name="description" content="学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的例子可以帮助更好的理解事件冒泡。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&amp;lt;style&amp;gt;    .wra">
 <meta name="keywords" content="事件, 冒泡">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事件冒泡的实例应用---点击别处关闭Modal弹窗">
 <meta property="og:url" content="http://wangjq.net/2018/10/19/事件冒泡的实例应用-点击别处关闭Modal弹窗/index.html">
 <meta property="og:site_name" content="Moonstone&#39;s Blog">
-<meta property="og:description" content="学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的例子可以帮助更好的理解事件冒泡。">
+<meta property="og:description" content="学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的例子可以帮助更好的理解事件冒泡。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&amp;lt;style&amp;gt;    .wra">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-19T05:09:54.640Z">
+<meta property="og:updated_time" content="2018-10-20T01:27:20.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件冒泡的实例应用---点击别处关闭Modal弹窗">
-<meta name="twitter:description" content="学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的例子可以帮助更好的理解事件冒泡。">
+<meta name="twitter:description" content="学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的例子可以帮助更好的理解事件冒泡。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&amp;lt;style&amp;gt;    .wra">
 
 
 
@@ -320,7 +320,13 @@
       
 
       
-        <p>学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的例子可以帮助更好的理解事件冒泡。</p>
+        <p>学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的<strong>例子</strong>可以帮助更好的理解<strong>事件冒泡</strong>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .wrapper&#123;</span></span><br><span class="line"><span class="undefined">        position: relative;</span></span><br><span class="line"><span class="undefined">        display: inline-block;</span></span><br><span class="line"><span class="undefined">        transition: all 0.3s;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .modal&#123;</span></span><br><span class="line"><span class="undefined">        border: 1px solid grey;</span></span><br><span class="line"><span class="undefined">        border-radius: 5px;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        left: 100%;</span></span><br><span class="line"><span class="undefined">        top: 0;</span></span><br><span class="line"><span class="undefined">        white-space: nowrap;</span></span><br><span class="line"><span class="undefined">        padding: 10px;</span></span><br><span class="line"><span class="undefined">        margin-left: 10px;</span></span><br><span class="line"><span class="undefined">        display: none;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .modal::before&#123;</span></span><br><span class="line"><span class="undefined">        content: '';</span></span><br><span class="line"><span class="undefined">        border: 10px solid transparent;</span></span><br><span class="line"><span class="undefined">        border-right: 10px solid grey;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        right: 100%;</span></span><br><span class="line"><span class="undefined">        top: 3px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .modal::after&#123;</span></span><br><span class="line"><span class="undefined">        content: '';</span></span><br><span class="line"><span class="undefined">        border: 10px solid transparent;</span></span><br><span class="line"><span class="undefined">        border-right: 10px solid #fff;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        right: 100%;</span></span><br><span class="line"><span class="undefined">        top: 3px;</span></span><br><span class="line"><span class="undefined">        margin-right: -1px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"click"</span>&gt;</span></span><br><span class="line">        click me</span><br><span class="line">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal"</span>&gt;</span></span><br><span class="line">        This is the modal content</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    $(<span class="string">".wrapper"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="undefined">        e.stopPropagation();</span></span><br><span class="line"><span class="javascript">        $(<span class="string">".modal"</span>).show();</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    $(<span class="string">"html"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        $(<span class="string">".modal"</span>).hide();</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在这里通过对wapper添加阻止事件传播<code>e.stopPropagation()</code>来阻止冒泡。</p>
+<hr>
+<p>以上是通过阻止事件传播的方法，下面介绍一种优化的省内存方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".wrapper"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">".modal"</span>).show();</span><br><span class="line">    $(<span class="built_in">document</span>).one(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">".modal"</span>).hide();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这样写的</p>
 
       
     </div>
@@ -378,6 +384,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/20/浏览器也会偷懒-解决无缝轮播的bug/" rel="prev" title="浏览器也会偷懒-解决无缝轮播的bug">
+                浏览器也会偷懒-解决无缝轮播的bug <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -445,7 +455,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
