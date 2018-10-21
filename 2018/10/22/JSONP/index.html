@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Moonstone&#39;s Blog">
 <meta property="og:description" content="JSONP不是什么高大上的东西，简单地来说： 请求方：frontend.com (浏览器) 响应房：backend.com (服务器)  请求方创建动态script，其中标签的src指向响应方，假设请求方的回调函数名称是renderPayment，我们就需要同时传一个查询参数callbackName=renderPayment给响应方 1234567891011121314151617&amp;lt;bu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-21T12:31:17.303Z">
+<meta property="og:updated_time" content="2018-10-21T12:33:45.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSONP">
 <meta name="twitter:description" content="JSONP不是什么高大上的东西，简单地来说： 请求方：frontend.com (浏览器) 响应房：backend.com (服务器)  请求方创建动态script，其中标签的src指向响应方，假设请求方的回调函数名称是renderPayment，我们就需要同时传一个查询参数callbackName=renderPayment给响应方 1234567891011121314151617&amp;lt;bu">
@@ -335,6 +335,7 @@
 <li><code>renderPayment(&#39;请求方要的数据&#39;)</code></li>
 </ul>
 <p>这样的响应</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (path === <span class="string">'/pay'</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> amount = fs.readFileSync(<span class="string">'./db'</span>, <span class="string">'utf8'</span>)</span><br><span class="line">    amount -= <span class="number">1</span></span><br><span class="line">    fs.writeFileSync(<span class="string">'./db'</span>, amount)</span><br><span class="line">    <span class="keyword">let</span> callbackName = query.callback</span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/javascript'</span>)</span><br><span class="line">    response.write(<span class="string">`</span></span><br><span class="line"><span class="string">        <span class="subst">$&#123;callbackName&#125;</span>.call(undefined, 'success')</span></span><br><span class="line"><span class="string">    `</span>)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>浏览器接收到响应后，就会执行<code>renderPayment.call(undefined, &#39;请求方要的数据&#39;)</code></p>
 </li>

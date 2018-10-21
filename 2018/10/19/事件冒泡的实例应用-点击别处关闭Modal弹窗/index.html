@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Moonstone&#39;s Blog">
 <meta property="og:description" content="学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的例子可以帮助更好的理解事件冒泡。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&amp;lt;style&amp;gt;    .wra">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T01:27:20.663Z">
+<meta property="og:updated_time" content="2018-10-21T12:34:37.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件冒泡的实例应用---点击别处关闭Modal弹窗">
 <meta name="twitter:description" content="学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的例子可以帮助更好的理解事件冒泡。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&amp;lt;style&amp;gt;    .wra">
@@ -326,7 +326,7 @@
 <hr>
 <p>以上是通过阻止事件传播的方法，下面介绍一种优化的省内存方法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".wrapper"</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">".modal"</span>).show();</span><br><span class="line">    $(<span class="built_in">document</span>).one(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">".modal"</span>).hide();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>这样写的</p>
+<p>这样写的好处是在<code>document</code>上绑定的click事件只会在每次点击<code>wrapper</code>的时候绑定一次。</p>
 
       
     </div>
