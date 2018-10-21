@@ -252,6 +252,242 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/29/JS回顾系列（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/29/JS回顾系列（一）/" itemprop="url">JS回顾系列（一）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T14:49:57+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="JavaScript数据类型"><a href="#JavaScript数据类型" class="headerlink" title="JavaScript数据类型"></a>JavaScript数据类型</h3><ol>
+<li><h5 id="JS中7中数据类型"><a href="#JS中7中数据类型" class="headerlink" title="JS中7中数据类型"></a>JS中7中数据类型</h5><ul>
+<li><code>Number</code>, <code>null</code>, <code>undefined</code>,  <code>String</code>, <code>Symbol</code>, <code>Boolean</code>,<code>Object</code></li>
+<li>其中，除<code>Object</code>外的前6种数据类型被称为<strong>基本类型</strong>或<strong>简单类型</strong></li>
+</ul>
+</li>
+<li><h5 id="Number"><a href="#Number" class="headerlink" title="Number"></a><code>Number</code></h5><ul>
+<li><code>Number</code>中需要记忆的点是<ul>
+<li>二进制都是以0b开头，如0b11为3（十进制），</li>
+<li>八进制以0开头，如<code>011</code>为9（十进制）。这是一个需要注意的点，例如电话号码<code>0105176531</code>就不能存成Number形式，否则会被认为是八进制，应该存成String类型。</li>
+<li>十六进制以0x开头，如<code>0x11</code>为17（十进制）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a><code>null</code>和<code>undefined</code></h5><ul>
+<li>如果变量没有值，那么就是<code>undefined</code>。</li>
+<li>惯例：<ul>
+<li>如果有一个对象，但现在不想给值，那么就给一个<code>null</code>。</li>
+<li>如果有一个非对象(number, string等)，但现在不想给值，那么就给一个<code>undefined</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="Object"><a href="#Object" class="headerlink" title="Object"></a><code>Object</code></h5><ul>
+<li>对象中的key的格式为字符串，但在定义时可以加引号也可以不加，但如果不加引号则必须满足标识符规范。</li>
+<li>取key时可以写成<code>person[&#39;name&#39;]</code>，当引号内的值满足标识符规范的情况下，可以写成<code>person.name</code></li>
+<li><strong><code>in</code></strong>， 可以用<code>in</code>来判断该对象是否有某属性，如<code>&#39;name&#39; in person</code>返回true存在，false不存在。</li>
+<li><strong>删掉</strong><code>object</code>中某属性：<code>delete person[&#39;name&#39;]</code></li>
+<li><strong><code>for...in</code></strong>，遍历<code>object</code></li>
+<li><code>typeof</code>查看变量属于什么类型</li>
+</ul>
+</li>
+</ol>
+<h3 id="JavaScript里的数据类型转换"><a href="#JavaScript里的数据类型转换" class="headerlink" title="JavaScript里的数据类型转换"></a>JavaScript里的数据类型转换</h3><ol>
+<li><h5 id="其他类型转为string"><a href="#其他类型转为string" class="headerlink" title="其他类型转为string"></a>其他类型转为string</h5><ul>
+<li>可以采用<code>xx.tostring()</code>方法，但对null支持不加</li>
+<li>全局函数<code>String(xx)</code></li>
+<li><strong>更流行</strong>的方法是<code>xx + &#39;&#39;</code></li>
+</ul>
+</li>
+<li><h5 id="转为boolean"><a href="#转为boolean" class="headerlink" title="转为boolean"></a>转为boolean</h5><ul>
+<li>全局方法<code>Boolean(xx)</code>。这里<strong>需要记住的一点</strong>是：<ul>
+<li><code>Boolean(&#39;&#39;)</code>的值为<code>false</code>而<code>Boolean({})</code>的值为<code>true</code></li>
+</ul>
+</li>
+<li><strong>要记住5个falsy值</strong>（falsy是在Boolean上下文中认定可转换为false的值）<ul>
+<li>number里的<code>0</code>和<code>NaN</code></li>
+<li>string里的<code>&#39;&#39;</code></li>
+<li><code>null</code></li>
+<li><code>undefined</code></li>
+</ul>
+</li>
+<li>所有的对象都是<code>true</code></li>
+</ul>
+</li>
+<li><h5 id="转为number"><a href="#转为number" class="headerlink" title="转为number"></a>转为number</h5><ul>
+<li>全局方法<code>Number(&#39;1&#39;)</code></li>
+<li><code>parseInt(&#39;1&#39;, 10)</code>，<code>parseInt(&#39;123silence&#39;, 10)</code>这里会解析到123</li>
+<li><code>parseFloat(&#39;1.23&#39;)</code></li>
+<li><code>&#39;1&#39; - 0</code>这种方法被程序员广泛使用</li>
+<li><code>+ &#39;1&#39;</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="JavaScript-内存"><a href="#JavaScript-内存" class="headerlink" title="JavaScript 内存"></a>JavaScript 内存</h3><ul>
+<li><p>在JavaScript中，有内存被分为stack（栈内存）和heap（堆内存）。</p>
+</li>
+<li><p>所有简单数据类型（6个）都会被存在栈内存。</p>
+</li>
+<li><p>而复杂类型会在栈内存中存一个地址，地址指向堆内存的某个区域，这个区域存放着实际的数据。</p>
+</li>
+</ul>
+<p><strong>3个内存题目：</strong></p>
+<ol>
+<li><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span> : <span class="string">'Jack'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = &#123;<span class="attr">name</span>: <span class="string">'Lorry'</span>&#125;;</span><br><span class="line">a[<span class="string">'name'</span>] = ?    <span class="comment">// Jack</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'Jack'</span>&#125;；</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b.name = <span class="string">'Lorry'</span>;</span><br><span class="line">a[<span class="string">'name'</span>] = ?    <span class="comment">// Lorry</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'Jack'</span>&#125;；</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = <span class="literal">null</span>;</span><br><span class="line">a = ?    <span class="comment">// &#123;name: 'Jack'&#125;;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>这里的考点是在第3行的<code>a.x</code>其实还是原来的a，后面a又有了新地址，所以x是给了原来的老地址，而b一直指向的是老地址</p>
+<ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>: <span class="number">1</span>&#125;；</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>: <span class="number">2</span>&#125;</span><br><span class="line">a.x = ?    <span class="comment">// undefined </span></span><br><span class="line">b.x = ?    <span class="comment">// [object Object]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><h6 id="什么是垃圾？"><a href="#什么是垃圾？" class="headerlink" title="什么是垃圾？"></a>什么是垃圾？</h6><ul>
+<li>如果一个对象没有被引用，那么它就是垃圾</li>
+</ul>
+<h6 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">document</span>.body.onclick = fn;</span><br><span class="line">fn = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// function()&#123;&#125;是不是垃圾？</span></span><br><span class="line"><span class="comment">// 答案是否定的，通过想象内存图可得知function()依然被document.body.onclick所引用着</span></span><br></pre></td></tr></table></figure>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ol>
+<li><h4 id="数组的本质"><a href="#数组的本质" class="headerlink" title="数组的本质"></a>数组的本质</h4><p>本质上，数组属于一种特殊的对象。<code>typeof</code>运算符会返回数组的类型是<code>object</code>。</p>
+</li>
+<li><p>length属性</p>
+<ul>
+<li><p>数组的<code>length</code>属性，返回数组的成员数量。</p>
+</li>
+<li><p><code>length</code>属性是可写的。如果人为设置一个小于当前成员个数的值，该数组的成员会自动减少到<code>length</code>设置的值。</p>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line">arr.length <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line">arr.length = <span class="number">2</span>;</span><br><span class="line">arr <span class="comment">// ['a', 'b']</span></span><br></pre></td></tr></table></figure>
+<p>上面代码表示，当数组的<code>length</code>属性设为2（即最大的整数键只能是1）那么整数键2（值为<code>c</code>）就已经不在数组中了，被自动删除了。</p>
+<p>清空数组的一个有效方法，就是将<code>length</code>属性设为0。</p>
+</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/18/Node-js写脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -623,7 +859,7 @@
 </ol>
 <ul>
 <li><p>在需要的HTML标签上，使用<code>className</code>指定模块化的样式</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 className=&#123;cssobj.title&#125;&gt;Hello, World!&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 className=&#123;cssobj.title&#125;&gt;Hello, World!<span class="xml"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>使用<code>localIdentName</code>自定义生成的类名格式，可选的参数有：</li>
 </ol>
@@ -646,7 +882,7 @@
 <p><code>onClick = { function }</code></p>
 </li>
 <li><p>用的最多的时间绑定形式为：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">BindEvent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> &lt;div&gt;</span><br><span class="line">            BindEvent组件</span><br><span class="line">            &lt;hr/&gt;</span><br><span class="line">            &#123;/*在React中，有一套自己的事件绑定机制; 事件名使用驼峰命名*/&#125;</span><br><span class="line">            &lt;button onClick=&#123; () =&gt; this.myClickFunction() &#125;&gt;按钮&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    myClickFunction()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Test for click function.'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">BindEvent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            BindEvent组件</span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span></span><br><span class="line"><span class="xml">            &#123;/*在React中，有一套自己的事件绑定机制; 事件名使用驼峰命名*/&#125;</span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;</span> () =&gt;</span> this.myClickFunction() &#125;&gt;按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    myClickFunction()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Test for click function.'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在React中，如果想为state中的数据重新复制，不要使用this.state.xxx = value。而应该调用React中提供的this.setState({ msg: ‘123’ })</p>
 <ol>
@@ -1038,7 +1274,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack默认只能打包处理.js后缀名类型的文件，像.png .vue无法主动处理</span></span><br><span class="line"><span class="comment">// 所以要配置第三方的loader规则</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">"development"</span>,</span><br><span class="line">    plugins: [</span><br><span class="line">        htmlPlugin</span><br><span class="line">    ],</span><br><span class="line">    <span class="built_in">module</span>: &#123; <span class="comment">// 所有第三方模块配置的规则</span></span><br><span class="line">        rules: [ <span class="comment">// 第三方匹配规则</span></span><br><span class="line">            &#123;<span class="attr">test</span>: <span class="regexp">/\.js|jsx$/</span>, <span class="attr">use</span>: <span class="string">'babel-loader'</span>, <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>&#125;,</span><br><span class="line">            <span class="comment">// 千万别忘记添加exclude排除项，否则会报错</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>一切配置完成后，就可以在.js文件中使用JSX语法了</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mydiv = &lt;div id="mydiv" title="div aaa"&gt;</span><br><span class="line">This is a div element</span><br><span class="line">&lt;h1&gt;Rick and Morty&lt;/h1&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(mydiv, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mydiv = <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"mydiv"</span> <span class="attr">title</span>=<span class="string">"div aaa"</span>&gt;</span></span></span><br><span class="line"><span class="xml">This is a div element</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Rick and Morty<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(mydiv, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -1050,8 +1286,8 @@
 </li>
 </ul>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> names = [<span class="string">'love🍌'</span>, <span class="string">'love🍊'</span>, <span class="string">'dislike🍐'</span>];</span><br></pre></td></tr></table></figure>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方案一： 定义一个空数组，将来用来存放名称及标签</span></span><br><span class="line"><span class="keyword">const</span> nameArr = [];</span><br><span class="line">names.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> tmp = &lt;h5 key=&#123;item&#125;&gt;&#123;item&#125;&lt;/h5&gt;;</span><br><span class="line">    nameArr.push(tmp);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用ReactDOM把虚拟DOM渲染到页面上</span></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    nameArr,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));</span><br></pre></td></tr></table></figure>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方案二: 用.map方法在内部编写(map一定要有return)</span></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">    &#123;names.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &lt;h5 key=&#123;item&#125;&gt;&#123;item&#125;&lt;/h5&gt;</span><br><span class="line">    &#125;)&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById("app")</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方案一： 定义一个空数组，将来用来存放名称及标签</span></span><br><span class="line"><span class="keyword">const</span> nameArr = [];</span><br><span class="line">names.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> tmp = <span class="xml"><span class="tag">&lt;<span class="name">h5</span> <span class="attr">key</span>=<span class="string">&#123;item&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span>;</span><br><span class="line">    nameArr.push(tmp);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用ReactDOM把虚拟DOM渲染到页面上</span></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    nameArr,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方案二: 用.map方法在内部编写(map一定要有return)</span></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">    &#123;names.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h5</span> <span class="attr">key</span>=<span class="string">&#123;item&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span></span><br><span class="line">    &#125;)&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById("app")</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
 <p>如果箭头函数只有一行代码，则可以省略大括号，如果大括号省略则return也可以不必填写。则可以简写成<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">    &#123;names.map(<span class="function"><span class="params">item</span> =&gt;</span> &lt;h5&gt;&#123;item&#125;&lt;<span class="regexp">/h5&gt;)&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"app"</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
 
           
@@ -1402,7 +1638,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1415,7 +1651,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

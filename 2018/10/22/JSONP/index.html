@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JSONP," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Node.js写脚本JavaScript虽然和Java没什么关系，但是JS依然是一种脚本  我们在Bash命令行里输入Bash命令，也可以再Node.js命令行里通过输入JS命令得到一样的结果(Ctrl+D退出) Bash脚本能做的事情，JS脚本也能做（sh demo.sh对应node demo.js）  用JS切换目录1234console.log(process.cwd()) // 打印当前目">
+<meta name="description" content="JSONP不是什么高大上的东西，简单地来说： 请求方：frontend.com (浏览器) 响应房：backend.com (服务器)  请求方创建动态script，其中标签的src指向响应方，假设请求方的回调函数名称是renderPayment，我们就需要同时传一个查询参数callbackName=renderPayment给响应方 1234567891011121314151617&amp;lt;bu">
+<meta name="keywords" content="JSONP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Node.js写脚本">
-<meta property="og:url" content="http://wangjq.net/2018/09/18/Node-js写脚本/index.html">
+<meta property="og:title" content="JSONP">
+<meta property="og:url" content="http://wangjq.net/2018/10/22/JSONP/index.html">
 <meta property="og:site_name" content="Moonstone&#39;s Blog">
-<meta property="og:description" content="Node.js写脚本JavaScript虽然和Java没什么关系，但是JS依然是一种脚本  我们在Bash命令行里输入Bash命令，也可以再Node.js命令行里通过输入JS命令得到一样的结果(Ctrl+D退出) Bash脚本能做的事情，JS脚本也能做（sh demo.sh对应node demo.js）  用JS切换目录1234console.log(process.cwd()) // 打印当前目">
+<meta property="og:description" content="JSONP不是什么高大上的东西，简单地来说： 请求方：frontend.com (浏览器) 响应房：backend.com (服务器)  请求方创建动态script，其中标签的src指向响应方，假设请求方的回调函数名称是renderPayment，我们就需要同时传一个查询参数callbackName=renderPayment给响应方 1234567891011121314151617&amp;lt;bu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T16:16:37.096Z">
+<meta property="og:updated_time" content="2018-10-21T12:27:05.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node.js写脚本">
-<meta name="twitter:description" content="Node.js写脚本JavaScript虽然和Java没什么关系，但是JS依然是一种脚本  我们在Bash命令行里输入Bash命令，也可以再Node.js命令行里通过输入JS命令得到一样的结果(Ctrl+D退出) Bash脚本能做的事情，JS脚本也能做（sh demo.sh对应node demo.js）  用JS切换目录1234console.log(process.cwd()) // 打印当前目">
+<meta name="twitter:title" content="JSONP">
+<meta name="twitter:description" content="JSONP不是什么高大上的东西，简单地来说： 请求方：frontend.com (浏览器) 响应房：backend.com (服务器)  请求方创建动态script，其中标签的src指向响应方，假设请求方的回调函数名称是renderPayment，我们就需要同时传一个查询参数callbackName=renderPayment给响应方 1234567891011121314151617&amp;lt;bu">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://wangjq.net/2018/09/18/Node-js写脚本/"/>
+  <link rel="canonical" href="http://wangjq.net/2018/10/22/JSONP/"/>
 
 
 
 
 
-  <title>Node.js写脚本 | Moonstone's Blog</title>
+  <title>JSONP | Moonstone's Blog</title>
   
 
 
@@ -252,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/18/Node-js写脚本/">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/22/JSONP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaqi Wang">
@@ -269,7 +270,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Node.js写脚本</h2>
+          <h2 class="post-title" itemprop="name headline">JSONP</h2>
         
 
         <div class="post-meta">
@@ -281,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T22:36:55+10:00">
-                2018-09-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T02:01:51+11:00">
+                2018-10-21
               </time>
             
 
@@ -319,13 +320,33 @@
       
 
       
-        <h2 id="Node-js写脚本"><a href="#Node-js写脚本" class="headerlink" title="Node.js写脚本"></a>Node.js写脚本</h2><p>JavaScript虽然和Java没什么关系，但是JS依然是一种脚本</p>
+        <p>JSONP不是什么高大上的东西，简单地来说：</p>
+<p>请求方：frontend.com (浏览器)</p>
+<p>响应房：backend.com (服务器)</p>
 <ol>
-<li>我们在Bash命令行里输入Bash命令，也可以再Node.js命令行里通过输入JS命令得到一样的结果(<code>Ctrl</code>+<code>D</code>退出)</li>
-<li>Bash脚本能做的事情，JS脚本也能做（<code>sh demo.sh</code>对应<code>node demo.js</code>）</li>
+<li><p>请求方创建动态<code>script</code>，其中标签的<code>src</code>指向响应方，假设请求方的回调函数名称是<code>renderPayment</code>，我们就需要同时传一个查询参数<code>callbackName=renderPayment</code>给响应方</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"click"</span>&gt;</span>click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    click.addEventListener('click', function()&#123;</span></span><br><span class="line"><span class="undefined">        let script = document.createElement("script");</span></span><br><span class="line"><span class="undefined">        let functionName = 'f' + parseInt(Math.random() * 100000, 10);</span></span><br><span class="line"><span class="undefined">        window[functionName] = function(result)&#123;</span></span><br><span class="line"><span class="undefined">            console.log(`the result from back end is $&#123;result&#125;!`);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        script.src = `127.0.0.1:8001/pay?callbackName=$&#123;functionName&#125;`</span></span><br><span class="line"><span class="undefined">        document.body.appendChild(script);</span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="undefined">        // delete script tag when finish the request</span></span><br><span class="line"><span class="undefined">        script.onload = function(e)&#123;</span></span><br><span class="line"><span class="undefined">            e.currentTarget.remove();</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当然我们可以使用jQuery用更简洁的代码实现：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    $.ajax(&#123;</span></span><br><span class="line"><span class="undefined">        url: '127.0.0.1:8001/pay',</span></span><br><span class="line"><span class="undefined">        dataType: 'jsonp',</span></span><br><span class="line"><span class="undefined">        success: function(response)&#123;</span></span><br><span class="line"><span class="undefined">            console.log(`the result from back end is $&#123;response&#125;!`);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>响应方根据查询参数<code>callbackName</code>，构造类似</p>
+<ul>
+<li><code>renderPayment.call(undefined, &#39;请求方要的数据&#39;)</code></li>
+<li><code>renderPayment(&#39;请求方要的数据&#39;)</code></li>
+</ul>
+<p>这样的响应</p>
+</li>
+<li><p>浏览器接收到响应后，就会执行<code>renderPayment.call(undefined, &#39;请求方要的数据&#39;)</code></p>
+</li>
+<li><p>那么请求方就获得了想要的数据并且完成处理</p>
+</li>
 </ol>
-<h3 id="用JS切换目录"><a href="#用JS切换目录" class="headerlink" title="用JS切换目录"></a>用JS切换目录</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(process.cwd()) <span class="comment">// 打印当前目录</span></span><br><span class="line"><span class="comment">// process.chdir('~/Desktop'); 这句话不行，因为JS不认识 ~ 目录</span></span><br><span class="line">process.chdir(<span class="string">"Users/Moonstone/Desktop"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(process.cwd()) <span class="comment">// 打印当前目录</span></span><br></pre></td></tr></table></figure>
-<h3 id="用JS创建目录"><a href="#用JS创建目录" class="headerlink" title="用JS创建目录"></a>用JS创建目录</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line">fs.mkdirSync(<span class="string">"demo"</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>这就是JSONP</strong></p>
+<p>下面是一些约定成俗的东西：</p>
+<ol>
+<li>GET请求中的查询参数通常为<code>callback</code></li>
+<li>回调函数名通常为<code>非数字+随机数</code>，如<code>j48174940</code></li>
+</ol>
 
       
     </div>
@@ -346,7 +367,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://wangjq.net/2018/09/18/Node-js写脚本/" title="Node.js写脚本">http://wangjq.net/2018/09/18/Node-js写脚本/</a>
+    <a href="http://wangjq.net/2018/10/22/JSONP/" title="JSONP">http://wangjq.net/2018/10/22/JSONP/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -359,6 +380,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/JSONP/" rel="tag"># JSONP</a>
+          
+        </div>
+      
 
       
       
@@ -368,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/22/React-Router4-0/" rel="next" title="React Router4.0">
-                <i class="fa fa-chevron-left"></i> React Router4.0
+              <a href="/2018/10/20/浏览器也会偷懒-解决无缝轮播的bug/" rel="next" title="浏览器也会偷懒-解决无缝轮播的bug">
+                <i class="fa fa-chevron-left"></i> 浏览器也会偷懒-解决无缝轮播的bug
               </a>
             
           </div>
@@ -377,10 +404,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/29/JS回顾系列（一）/" rel="prev" title="JS回顾系列（一）">
-                JS回顾系列（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -432,17 +455,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -521,22 +535,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js写脚本"><span class="nav-number">1.</span> <span class="nav-text">Node.js写脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用JS切换目录"><span class="nav-number">1.1.</span> <span class="nav-text">用JS切换目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用JS创建目录"><span class="nav-number">1.2.</span> <span class="nav-text">用JS创建目录</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
