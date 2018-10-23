@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="DOM, 虚拟DOM," />
+  <meta name="keywords" content="MVC," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1. DOM简介Document Object Model: 把文档和对象对应起来的模型叫DOM  meta, title, script, 等等都是Element对象， html属于Document对象 h1, h2, p等中的文本属于Text对象。 注释属于Comment对象 这3种对象有一个共同的祖先：Node DOM的最小组成单位叫做Node DOM树的根节点是HTML  2. 碎知识整理">
-<meta name="keywords" content="DOM, 虚拟DOM">
+<meta name="description" content="MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。 不似springMVC，我们现在可以简单的把前端不同功能的function分为不同的Modal。而每一部分Modal对应的视图部分我们可以称之为View，在每个Modal里，控制对应View的部分称之为Controller。 在引入MVC思想之后，发现我们并不想要全局变量而">
+<meta name="keywords" content="MVC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DOM(API, event)，虚拟DOM深入理解">
-<meta property="og:url" content="http://wangjq.net/2018/10/04/DOM-API-event-，虚拟DOM深入理解/index.html">
+<meta property="og:title" content="在前端引入MVC思想以及会遇到的问题">
+<meta property="og:url" content="http://wangjq.net/2018/10/24/在前端引入MVC思想以及会遇到的问题/index.html">
 <meta property="og:site_name" content="Moonstone&#39;s Blog">
-<meta property="og:description" content="1. DOM简介Document Object Model: 把文档和对象对应起来的模型叫DOM  meta, title, script, 等等都是Element对象， html属于Document对象 h1, h2, p等中的文本属于Text对象。 注释属于Comment对象 这3种对象有一个共同的祖先：Node DOM的最小组成单位叫做Node DOM树的根节点是HTML  2. 碎知识整理">
+<meta property="og:description" content="MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。 不似springMVC，我们现在可以简单的把前端不同功能的function分为不同的Modal。而每一部分Modal对应的视图部分我们可以称之为View，在每个Modal里，控制对应View的部分称之为Controller。 在引入MVC思想之后，发现我们并不想要全局变量而">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-05T08:51:02.404Z">
+<meta property="og:updated_time" content="2018-10-23T13:00:46.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DOM(API, event)，虚拟DOM深入理解">
-<meta name="twitter:description" content="1. DOM简介Document Object Model: 把文档和对象对应起来的模型叫DOM  meta, title, script, 等等都是Element对象， html属于Document对象 h1, h2, p等中的文本属于Text对象。 注释属于Comment对象 这3种对象有一个共同的祖先：Node DOM的最小组成单位叫做Node DOM树的根节点是HTML  2. 碎知识整理">
+<meta name="twitter:title" content="在前端引入MVC思想以及会遇到的问题">
+<meta name="twitter:description" content="MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。 不似springMVC，我们现在可以简单的把前端不同功能的function分为不同的Modal。而每一部分Modal对应的视图部分我们可以称之为View，在每个Modal里，控制对应View的部分称之为Controller。 在引入MVC思想之后，发现我们并不想要全局变量而">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://wangjq.net/2018/10/04/DOM-API-event-，虚拟DOM深入理解/"/>
+  <link rel="canonical" href="http://wangjq.net/2018/10/24/在前端引入MVC思想以及会遇到的问题/"/>
 
 
 
 
 
-  <title>DOM(API, event)，虚拟DOM深入理解 | Moonstone's Blog</title>
+  <title>在前端引入MVC思想以及会遇到的问题 | Moonstone's Blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/04/DOM-API-event-，虚拟DOM深入理解/">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/24/在前端引入MVC思想以及会遇到的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaqi Wang">
@@ -270,7 +270,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">DOM(API, event)，虚拟DOM深入理解</h2>
+          <h2 class="post-title" itemprop="name headline">在前端引入MVC思想以及会遇到的问题</h2>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T16:06:26+10:00">
-                2018-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T02:43:52+11:00">
+                2018-10-23
               </time>
             
 
@@ -320,27 +320,17 @@
       
 
       
-        <h3 id="1-DOM简介"><a href="#1-DOM简介" class="headerlink" title="1. DOM简介"></a>1. DOM简介</h3><p>Document Object Model: 把文档和对象对应起来的模型叫DOM</p>
-<ul>
-<li><code>meta</code>, <code>title</code>, <code>script</code>, 等等都是<strong>Element</strong>对象， <code>html</code>属于<strong>Document</strong>对象</li>
-<li><code>h1</code>, <code>h2</code>, <code>p</code>等中的文本属于<strong>Text</strong>对象。</li>
-<li>注释属于<strong>Comment</strong>对象</li>
-<li>这3种对象有一个共同的祖先：<strong>Node</strong></li>
-<li>DOM的最小组成单位叫做<strong>Node</strong></li>
-<li>DOM树的根节点是<code>HTML</code></li>
-</ul>
-<h3 id="2-碎知识整理"><a href="#2-碎知识整理" class="headerlink" title="2. 碎知识整理"></a>2. 碎知识整理</h3><ol>
-<li>Node的接口（属性和方法）</li>
-</ol>
-<ul>
-<li>innerText和textContent区别：前者是由IE浏览器引入的，后者是之后由Firefox和Opera引入的. <strong><code>textContent</code></strong>会获取所有元素的内容，包括<font color="darkgreen"> script标签和style标签里的文字内容 </font></li>
-<li><code>removeChild()</code>只是将元素从页面中移除，但内存中还存在</li>
-<li>nextSibling可能会获取到文本，因为在html中，标签之间的<font color="darkgreen">回车</font>属于文本</li>
-<li>nodeType需要背，<font color="darkgreen">1表示节点，3表示文本</font></li>
-<li>cloneNode()可以传参数<code>true</code>来表示是否为深度克隆，深度克隆会将所有的子元素都克隆下来</li>
-<li><code>parent.childNodes</code> 是<strong>动态集合</strong>。所谓动态集合就是一个活的集合，DOM树删除或新增一个相关节点，都会立刻反映在NodeList接口之中。</li>
-<li><code>document.querySelectorAll</code>方法返回的是一个<strong>静态集合</strong>。DOM内部的变化，并不会实时反映在该方法的返回结果之中。</li>
-</ul>
+        <p>MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。</p>
+<p>不似springMVC，我们现在可以简单的把前端不同功能的<code>function</code>分为不同的<code>Modal</code>。而每一部分<code>Modal</code>对应的视图部分我们可以称之为<code>View</code>，在每个<code>Modal</code>里，控制对应<code>View</code>的部分称之为<code>Controller</code>。</p>
+<p>在引入<code>MVC</code>思想之后，发现我们并不想要全局变量而想使用局部变量，可在ES 5中，只有函数才具有局部变量，于是我们声明一个function并且立即执行，如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;.call();</span><br></pre></td></tr></table></figure>
+<p>但是这种写法在Chrome中会报错说语法错误，所以我们需要使用下述写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;.call(); <span class="comment">// 我们不在乎这个匿名函数的返回值，所以加个!取反没关系</span></span><br></pre></td></tr></table></figure>
+<p>下面举个例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'frank'</span>,</span><br><span class="line">        age: <span class="number">18</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，立即执行函数使得<code>person</code>无法被外部访问，但若我们一定要操作<code>person</code>应该怎么办呢？我们可以使用<code>闭包</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'frank'</span>,</span><br><span class="line">        age: <span class="number">18</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.ageGrowUp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        person.age += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> person.age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
+<p>所以<code>window.ageGrowUp</code>保存了匿名函数的地址，任何地方都可以使用<code>window.ageGrowUp</code>来操作<code>person.age</code>，但是不能直接访问<code>person</code></p>
 
       
     </div>
@@ -361,7 +351,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://wangjq.net/2018/10/04/DOM-API-event-，虚拟DOM深入理解/" title="DOM(API, event)，虚拟DOM深入理解">http://wangjq.net/2018/10/04/DOM-API-event-，虚拟DOM深入理解/</a>
+    <a href="http://wangjq.net/2018/10/24/在前端引入MVC思想以及会遇到的问题/" title="在前端引入MVC思想以及会遇到的问题">http://wangjq.net/2018/10/24/在前端引入MVC思想以及会遇到的问题/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -376,7 +366,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/DOM-虚拟DOM/" rel="tag"># DOM, 虚拟DOM</a>
+            <a href="/tags/MVC/" rel="tag"># MVC</a>
           
         </div>
       
@@ -389,8 +379,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/01/JS动画与缓动/" rel="next" title="JS动画与缓动">
-                <i class="fa fa-chevron-left"></i> JS动画与缓动
+              <a href="/2018/10/22/同源策略与CORS跨域/" rel="next" title="同源策略与CORS跨域 & AJAX">
+                <i class="fa fa-chevron-left"></i> 同源策略与CORS跨域 & AJAX
               </a>
             
           </div>
@@ -398,10 +388,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/06/自制简易jQuery/" rel="prev" title="自制简易jQuery">
-                自制简易jQuery <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -453,17 +439,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -542,22 +519,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-DOM简介"><span class="nav-number">1.</span> <span class="nav-text">1. DOM简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-碎知识整理"><span class="nav-number">2.</span> <span class="nav-text">2. 碎知识整理</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
