@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。 不似springMVC，我们现在可以简单的把前端不同功能的function分为不同的Modal。而每一部分Modal对应的视图部分我们可以称之为View，在每个Modal里，控制对应View的部分称之为Controller。 在引入MVC思想之后，发现我们并不想要全局变量而">
+<meta name="description" content="MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。 不似springMVC，我们现在可以简单的把前端不同功能的function分为不同的Modal。而每一部分Modal对应的视图部分我们可以称之为View，在每个Modal里，控制对应View的部分称之为Controller。 MVC是一种代码分层思想，Model 和服务器交">
 <meta name="keywords" content="MVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在前端引入MVC思想以及会遇到的问题">
 <meta property="og:url" content="http://wangjq.net/2018/10/24/在前端引入MVC思想以及会遇到的问题/index.html">
 <meta property="og:site_name" content="Moonstone&#39;s Blog">
-<meta property="og:description" content="MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。 不似springMVC，我们现在可以简单的把前端不同功能的function分为不同的Modal。而每一部分Modal对应的视图部分我们可以称之为View，在每个Modal里，控制对应View的部分称之为Controller。 在引入MVC思想之后，发现我们并不想要全局变量而">
+<meta property="og:description" content="MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。 不似springMVC，我们现在可以简单的把前端不同功能的function分为不同的Modal。而每一部分Modal对应的视图部分我们可以称之为View，在每个Modal里，控制对应View的部分称之为Controller。 MVC是一种代码分层思想，Model 和服务器交">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-23T13:00:46.055Z">
+<meta property="og:updated_time" content="2018-10-24T06:26:08.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在前端引入MVC思想以及会遇到的问题">
-<meta name="twitter:description" content="MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。 不似springMVC，我们现在可以简单的把前端不同功能的function分为不同的Modal。而每一部分Modal对应的视图部分我们可以称之为View，在每个Modal里，控制对应View的部分称之为Controller。 在引入MVC思想之后，发现我们并不想要全局变量而">
+<meta name="twitter:description" content="MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。 不似springMVC，我们现在可以简单的把前端不同功能的function分为不同的Modal。而每一部分Modal对应的视图部分我们可以称之为View，在每个Modal里，控制对应View的部分称之为Controller。 MVC是一种代码分层思想，Model 和服务器交">
 
 
 
@@ -322,14 +322,19 @@
       
         <p>MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。</p>
 <p>不似springMVC，我们现在可以简单的把前端不同功能的<code>function</code>分为不同的<code>Modal</code>。而每一部分<code>Modal</code>对应的视图部分我们可以称之为<code>View</code>，在每个<code>Modal</code>里，控制对应<code>View</code>的部分称之为<code>Controller</code>。</p>
+<p>MVC是一种代码分层思想，Model 和服务器交互，Model 将得到的数据交给 Controller，Controller 把数据填入 View，并监听 View<br>用户操作 View，如点击按钮，Controller 就会接受到点击事件，Controller 这时会去调用 Model，Model 会与服务器交互，得到数据后返回给 Controller，Controller 得到数据就去更新 View</p>
+<p>Model负责数据层, 主要负责前后端的数据交互</p>
+<p>VIew负责视图, 就是将页面呈现给用户</p>
+<p>Controller负责具体的业务逻辑实现, 就是除了视图显示和前后端数据交互之外的所有东西</p>
+<p>MVC的好处：职责分明，模块清晰，代码简单。</p>
 <p>在引入<code>MVC</code>思想之后，发现我们并不想要全局变量而想使用局部变量，可在ES 5中，只有函数才具有局部变量，于是我们声明一个function并且立即执行，如</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;.call();</span><br></pre></td></tr></table></figure>
 <p>但是这种写法在Chrome中会报错说语法错误，所以我们需要使用下述写法：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;.call(); <span class="comment">// 我们不在乎这个匿名函数的返回值，所以加个!取反没关系</span></span><br></pre></td></tr></table></figure>
 <p>下面举个例子:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'frank'</span>,</span><br><span class="line">        age: <span class="number">18</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'Catherine'</span>,</span><br><span class="line">        age: <span class="number">17</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
 <p>在上面的例子中，立即执行函数使得<code>person</code>无法被外部访问，但若我们一定要操作<code>person</code>应该怎么办呢？我们可以使用<code>闭包</code>：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'frank'</span>,</span><br><span class="line">        age: <span class="number">18</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.ageGrowUp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        person.age += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> person.age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'Catherine'</span>,</span><br><span class="line">        age: <span class="number">17</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.ageGrowUp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        person.age += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> person.age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
 <p>所以<code>window.ageGrowUp</code>保存了匿名函数的地址，任何地方都可以使用<code>window.ageGrowUp</code>来操作<code>person.age</code>，但是不能直接访问<code>person</code></p>
 
       
@@ -388,6 +393,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/25/原型与原型链/" rel="prev" title="原型与原型链">
+                原型与原型链 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -455,7 +464,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
