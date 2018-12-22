@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JSONP," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="JSONP不是什么高大上的东西，简单地来说： 请求方：frontend.com (浏览器) 响应房：backend.com (服务器)  请求方创建动态script，其中标签的src指向响应方，假设请求方的回调函数名称是renderPayment，我们就需要同时传一个查询参数callbackName=renderPayment给响应方 1&amp;lt;button id=&quot;click&quot;&amp;gt;click">
-<meta name="keywords" content="JSONP">
+<meta name="description" content="修饰符用于控制变量，类的作用与喝一些访问限制  访问权限修饰符： public, protected, private, default(即不设置) 一般把成员变量设置为private，用get和set函数去访问修改这个成员变量       public protected default private     同一个类 Y Y Y Y   同一个包 Y Y Y    子父类 Y Y     不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSONP">
-<meta property="og:url" content="http://wangjq.net/2018/10/22/JSONP/index.html">
+<meta property="og:title" content="Java修饰符">
+<meta property="og:url" content="http://wangjq.net/2018/12/21/Java修饰符/index.html">
 <meta property="og:site_name" content="Moonstone&#39;s Blog">
-<meta property="og:description" content="JSONP不是什么高大上的东西，简单地来说： 请求方：frontend.com (浏览器) 响应房：backend.com (服务器)  请求方创建动态script，其中标签的src指向响应方，假设请求方的回调函数名称是renderPayment，我们就需要同时传一个查询参数callbackName=renderPayment给响应方 1&amp;lt;button id=&quot;click&quot;&amp;gt;click">
+<meta property="og:description" content="修饰符用于控制变量，类的作用与喝一些访问限制  访问权限修饰符： public, protected, private, default(即不设置) 一般把成员变量设置为private，用get和set函数去访问修改这个成员变量       public protected default private     同一个类 Y Y Y Y   同一个包 Y Y Y    子父类 Y Y     不">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-25T12:55:58.694Z">
+<meta property="og:updated_time" content="2018-12-22T02:24:18.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JSONP">
-<meta name="twitter:description" content="JSONP不是什么高大上的东西，简单地来说： 请求方：frontend.com (浏览器) 响应房：backend.com (服务器)  请求方创建动态script，其中标签的src指向响应方，假设请求方的回调函数名称是renderPayment，我们就需要同时传一个查询参数callbackName=renderPayment给响应方 1&amp;lt;button id=&quot;click&quot;&amp;gt;click">
+<meta name="twitter:title" content="Java修饰符">
+<meta name="twitter:description" content="修饰符用于控制变量，类的作用与喝一些访问限制  访问权限修饰符： public, protected, private, default(即不设置) 一般把成员变量设置为private，用get和set函数去访问修改这个成员变量       public protected default private     同一个类 Y Y Y Y   同一个包 Y Y Y    子父类 Y Y     不">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://wangjq.net/2018/10/22/JSONP/"/>
+  <link rel="canonical" href="http://wangjq.net/2018/12/21/Java修饰符/"/>
 
 
 
 
 
-  <title>JSONP | Moonstone's Blog</title>
+  <title>Java修饰符 | Moonstone's Blog</title>
   
 
 
@@ -253,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/22/JSONP/">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/12/21/Java修饰符/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaqi Wang">
@@ -270,7 +269,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">JSONP</h2>
+          <h2 class="post-title" itemprop="name headline">Java修饰符</h2>
         
 
         <div class="post-meta">
@@ -282,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T02:01:51+11:00">
-                2018-10-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-21T22:22:15+08:00">
+                2018-12-21
               </time>
             
 
@@ -320,40 +319,70 @@
       
 
       
-        <p>JSONP不是什么高大上的东西，简单地来说：</p>
-<p>请求方：frontend.com (浏览器)</p>
-<p>响应房：backend.com (服务器)</p>
+        <p>修饰符用于控制变量，类的作用与喝一些访问限制</p>
 <ol>
-<li><p>请求方创建动态<code>script</code>，其中标签的<code>src</code>指向响应方，假设请求方的回调函数名称是<code>renderPayment</code>，我们就需要同时传一个查询参数<code>callbackName=renderPayment</code>给响应方</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"click"</span>&gt;</span>click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">click.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">    <span class="keyword">let</span> functionName = <span class="string">'f'</span> + <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">100000</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">window</span>[functionName] = <span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`the result from back end is <span class="subst">$&#123;result&#125;</span>!`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = <span class="string">`127.0.0.1:8001/pay?callbackName=<span class="subst">$&#123;functionName&#125;</span>`</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// delete script tag when finish the request</span></span><br><span class="line">    script.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">        e.currentTarget.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>当然我们可以使用jQuery用更简洁的代码实现：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'127.0.0.1:8001/pay'</span>,</span><br><span class="line">    dataType: <span class="string">'jsonp'</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`the result from back end is <span class="subst">$&#123;response&#125;</span>!`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<li><p>访问权限修饰符： <code>public</code>, <code>protected</code>, <code>private</code>, <code>default(即不设置)</code></p>
+<p>一般把成员变量设置为<code>private</code>，用<code>get</code>和<code>set</code>函数去访问修改这个成员变量</p>
 </li>
-<li><p>响应方根据查询参数<code>callbackName</code>，构造类似</p>
-<ul>
-<li><code>renderPayment.call(undefined, &#39;请求方要的数据&#39;)</code></li>
-<li><code>renderPayment(&#39;请求方要的数据&#39;)</code></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>public</th>
+<th>protected</th>
+<th>default</th>
+<th>private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同一个类</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>同一个包</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>子父类</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>不同包</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><code>static</code>: 把方法或者成员变量设置为类共享</li>
+</ol>
+<p>具有<code>static</code>修饰的方法和变量的类，我们称之为“静态类”</p>
+<p>调用方法：&lt;类名&gt;.&lt;方法名或成员变量名&gt;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello, world"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用：</span></span><br><span class="line">Main.main(<span class="keyword">null</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>final</code><ul>
+<li><code>final&lt;类&gt;;</code> —防止类被继承</li>
+<li><code>final&lt;变量&gt;;</code> —防止变量被修改引用到另外一个对象，可称为“常量”<ul>
+<li>思考： 常量指向的<strong>对象</strong>能否被修改？</li>
+<li>是可以的，因为它只是防止修改引用</li>
 </ul>
-<p>这样的响应</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (path === <span class="string">'/pay'</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> amount = fs.readFileSync(<span class="string">'./db'</span>, <span class="string">'utf8'</span>)</span><br><span class="line">    amount -= <span class="number">1</span></span><br><span class="line">    fs.writeFileSync(<span class="string">'./db'</span>, amount)</span><br><span class="line">    <span class="keyword">let</span> callbackName = query.callback</span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/javascript'</span>)</span><br><span class="line">    response.write(<span class="string">`</span></span><br><span class="line"><span class="string">        <span class="subst">$&#123;callbackName&#125;</span>.call(undefined, 'success')</span></span><br><span class="line"><span class="string">    `</span>)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>浏览器接收到响应后，就会执行<code>renderPayment.call(undefined, &#39;请求方要的数据&#39;)</code></p>
+<li><code>final&lt;方法&gt;;</code> —防止方法被重载</li>
+<li><code>final</code>成员变量必须在生命时候初始化，或者在构造函数中初始化！！</li>
+</ul>
 </li>
-<li><p>那么请求方就获得了想要的数据并且完成处理</p>
-</li>
-</ol>
-<p><strong>这就是JSONP</strong></p>
-<p>下面是一些约定成俗的东西：</p>
-<ol>
-<li>GET请求中的查询参数通常为<code>callback</code></li>
-<li>回调函数名通常为<code>非数字+随机数</code>，如<code>j48174940</code></li>
-</ol>
-<p>最后记录一道面试题：为什么JSONP不支持POST请求？</p>
-<p>Answer：</p>
-<ol>
-<li>因为<code>JSONP</code>是通过动态创建<code>script标签</code>实现的</li>
-<li>动态创建<code>script</code>的时候只能用<code>GET</code>，无法使用<code>POST</code></li>
 </ol>
 
       
@@ -375,7 +404,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://wangjq.net/2018/10/22/JSONP/" title="JSONP">http://wangjq.net/2018/10/22/JSONP/</a>
+    <a href="http://wangjq.net/2018/12/21/Java修饰符/" title="Java修饰符">http://wangjq.net/2018/12/21/Java修饰符/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -388,12 +417,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/JSONP/" rel="tag"># JSONP</a>
-          
-        </div>
-      
 
       
       
@@ -403,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/浏览器也会偷懒-解决无缝轮播的bug/" rel="next" title="浏览器也会偷懒-解决无缝轮播的bug">
-                <i class="fa fa-chevron-left"></i> 浏览器也会偷懒-解决无缝轮播的bug
+              <a href="/2018/12/20/Git相关/" rel="next" title="Git相关">
+                <i class="fa fa-chevron-left"></i> Git相关
               </a>
             
           </div>
@@ -412,10 +435,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/22/同源策略与CORS跨域/" rel="prev" title="同源策略与CORS跨域 & AJAX">
-                同源策略与CORS跨域 & AJAX <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -483,7 +502,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -496,7 +515,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

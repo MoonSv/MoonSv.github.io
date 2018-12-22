@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Cookie, Session, Cache-Control," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Question: 为什么form等请求可以跨域，而AJAX请求无法跨域？  因为原页面用form提交到另一个域名之后，原页面的脚本无法获取新页面中的内容。 所以浏览器认为这是安全的。 而AJAX是可以读取相应内容的， 因此浏览器不能允许你这样做。 如果你细心的话会发现，其实请求已经发送出去了，你只是拿不到响应而已。 所以浏览器这个策略的本质是，一个域名的JS，在未经允许的情况下，不得读取另一个域">
+<meta name="description" content="Cookie 服务器通过Set-Cookie头给客户端一串字符串 客户端每次访问相同域名的网站是，必须带上这段字符串 客户端要在一段时间内保存这个Cookie Cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的过期时间   Seesion 将SeesionID（随机数）通过`Cookie发给客户端 客户端访问服务器时，服务器读取SessionID 服务器有一块内存（哈希表">
+<meta name="keywords" content="Cookie, Session, Cache-Control">
 <meta property="og:type" content="article">
-<meta property="og:title" content="同源策略与CORS跨域 &amp; AJAX">
-<meta property="og:url" content="http://wangjq.net/2018/10/22/同源策略与CORS跨域/index.html">
+<meta property="og:title" content="Cookie, Session, Cache-Control">
+<meta property="og:url" content="http://wangjq.net/2018/10/29/Cookie-Session-Cache-Control/index.html">
 <meta property="og:site_name" content="Moonstone&#39;s Blog">
-<meta property="og:description" content="Question: 为什么form等请求可以跨域，而AJAX请求无法跨域？  因为原页面用form提交到另一个域名之后，原页面的脚本无法获取新页面中的内容。 所以浏览器认为这是安全的。 而AJAX是可以读取相应内容的， 因此浏览器不能允许你这样做。 如果你细心的话会发现，其实请求已经发送出去了，你只是拿不到响应而已。 所以浏览器这个策略的本质是，一个域名的JS，在未经允许的情况下，不得读取另一个域">
+<meta property="og:description" content="Cookie 服务器通过Set-Cookie头给客户端一串字符串 客户端每次访问相同域名的网站是，必须带上这段字符串 客户端要在一段时间内保存这个Cookie Cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的过期时间   Seesion 将SeesionID（随机数）通过`Cookie发给客户端 客户端访问服务器时，服务器读取SessionID 服务器有一块内存（哈希表">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-23T05:18:31.730Z">
+<meta property="og:updated_time" content="2018-10-30T12:20:53.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="同源策略与CORS跨域 &amp; AJAX">
-<meta name="twitter:description" content="Question: 为什么form等请求可以跨域，而AJAX请求无法跨域？  因为原页面用form提交到另一个域名之后，原页面的脚本无法获取新页面中的内容。 所以浏览器认为这是安全的。 而AJAX是可以读取相应内容的， 因此浏览器不能允许你这样做。 如果你细心的话会发现，其实请求已经发送出去了，你只是拿不到响应而已。 所以浏览器这个策略的本质是，一个域名的JS，在未经允许的情况下，不得读取另一个域">
+<meta name="twitter:title" content="Cookie, Session, Cache-Control">
+<meta name="twitter:description" content="Cookie 服务器通过Set-Cookie头给客户端一串字符串 客户端每次访问相同域名的网站是，必须带上这段字符串 客户端要在一段时间内保存这个Cookie Cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的过期时间   Seesion 将SeesionID（随机数）通过`Cookie发给客户端 客户端访问服务器时，服务器读取SessionID 服务器有一块内存（哈希表">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://wangjq.net/2018/10/22/同源策略与CORS跨域/"/>
+  <link rel="canonical" href="http://wangjq.net/2018/10/29/Cookie-Session-Cache-Control/"/>
 
 
 
 
 
-  <title>同源策略与CORS跨域 & AJAX | Moonstone's Blog</title>
+  <title>Cookie, Session, Cache-Control | Moonstone's Blog</title>
   
 
 
@@ -252,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/22/同源策略与CORS跨域/">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/29/Cookie-Session-Cache-Control/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiaqi Wang">
@@ -269,7 +270,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">同源策略与CORS跨域 & AJAX</h2>
+          <h2 class="post-title" itemprop="name headline">Cookie, Session, Cache-Control</h2>
         
 
         <div class="post-meta">
@@ -281,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T01:13:26+08:00">
-                2018-10-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T14:09:52+08:00">
+                2018-10-29
               </time>
             
 
@@ -319,54 +320,50 @@
       
 
       
-        <p>Question: 为什么form等请求可以跨域，而AJAX请求无法跨域？</p>
-<blockquote>
-<p>因为原页面用form提交到另一个域名之后，原页面的脚本无法获取新页面中的内容。</p>
-<p>所以浏览器认为这是安全的。</p>
-<p>而AJAX是可以<strong>读取相应内容的</strong>， 因此浏览器不能允许你这样做。</p>
-<p>如果你细心的话会发现，其实请求已经发送出去了，你只是拿不到响应而已。</p>
-<p>所以浏览器这个策略的本质是，一个域名的JS，在未经允许的情况下，不得读取另一个域名的内容。但浏览器并不阻止逆向另一个域名发送请求。</p>
-</blockquote>
-<h4 id="1-同源策略"><a href="#1-同源策略" class="headerlink" title="1. 同源策略"></a>1. 同源策略</h4><p><a href="https://earthsplitter.github.io/2017/03/21/%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96%E4%B8%8E%E8%B7%A8%E5%9F%9F%E8%AF%A6%E8%A7%A3/" target="_blank" rel="noopener">https://earthsplitter.github.io/2017/03/21/%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96%E4%B8%8E%E8%B7%A8%E5%9F%9F%E8%AF%A6%E8%A7%A3/</a></p>
-<ul>
-<li><p>协议相同(FTP, HTTP)</p>
+        <ol>
+<li><h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><ol>
+<li>服务器通过<code>Set-Cookie</code>头给客户端一串字符串</li>
+<li>客户端每次访问<strong>相同域名</strong>的网站是，必须带上这段字符串</li>
+<li>客户端要在一段时间内保存这个<code>Cookie</code></li>
+<li><code>Cookie</code>默认在用户关闭页面后就失效，后台代码可以任意设置<code>Cookie</code>的过期时间</li>
+</ol>
 </li>
-<li><p>域名相同</p>
+<li><h4 id="Seesion"><a href="#Seesion" class="headerlink" title="Seesion"></a>Seesion</h4><ol>
+<li>将<code>SeesionID</code>（随机数）通过`Cookie发给客户端</li>
+<li>客户端访问服务器时，服务器读取<code>SessionID</code></li>
+<li>服务器有一块<strong>内存</strong>（哈希表）保存了所有<code>session</code></li>
+<li>通过<code>SessionID</code>我们可以得倒对应用户的隐私信息如<code>id</code>, <code>email</code>等</li>
+<li>这块<strong>内存</strong>（哈希表）就是服务器上的所有<code>session</code></li>
+</ol>
 </li>
-<li><p>端口相同</p>
-<p>目的: 为了保护用户隐私，防止身份伪造等 </p>
+<li><h4 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h4><ol>
+<li><code>LocalStorage</code>跟<code>HTTP</code>无关</li>
+<li><code>HTTP</code>不会带上<code>LocalStorage</code>的值</li>
+<li>只有相同域名的页面才能互相读取<code>LocalStorage</code></li>
+<li>每个域名<code>LocalStorage</code>最大存储量为5Mb（每个浏览器不一样）</li>
+<li>常用场景：记录有没有提示过用户（等不敏感的信息）</li>
+<li><code>LocalStorage</code>永久有效，除非用户清理缓存</li>
+</ol>
 </li>
-</ul>
-<h4 id="2-JSONP"><a href="#2-JSONP" class="headerlink" title="2. JSONP"></a>2. JSONP</h4><ul>
-<li><p>优点：兼容性好 </p>
+<li><h4 id="SessionStorage"><a href="#SessionStorage" class="headerlink" title="SessionStorage"></a>SessionStorage</h4><ol>
+<li>前四点同上</li>
+<li><code>SessionStorage</code>在用户关闭页面后就失效</li>
+</ol>
 </li>
-<li><p>缺点：仅支持GET方法具有局限性 </p>
+<li><h4 id="HTTP缓存"><a href="#HTTP缓存" class="headerlink" title="HTTP缓存"></a>HTTP缓存</h4><ol>
+<li><p>设置<code>Cache-Control</code><strong>响应头</strong>来进行web性能优化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Cache-Control'</span>, <span class="string">'max-age=31650000'</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>可以让你的浏览器在一定时间内不访问服务器，直接访问本地的硬盘，这样速度会极快（因为请求都不会被发出去）。</li>
+<li>知乎设置Cache-Control的<code>max-age</code>为365天</li>
+<li>如果需要更新，可以直接在入口处<code>url</code>稍微变一下，跟以前的所有<code>url</code>都不一样，这样浏览器就会发送请求，去更新网页。</li>
+</ol>
 </li>
-<li>其设计思路是浏览器对<script>标签不做限制，因此可以利用这一点进行跨域请求 </li>
-<li>很简单，就是利用<script>标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个<script>元素，地址指向第三方的API网址，形如：<script src="<http://www.example.net/api?param1=1¶m2=2>"></script> 并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback({“name”:”hax”,”gender”:”Male”})。这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。补充：“历史遗迹”的意思就是，如果在今天重新设计的话，也许就不会允许这样简单的跨域了嘿，比如可能像XHR一样按照CORS规范要求服务器发送特定的http头。 </li>
-</ul>
-<h4 id="3-CORShttps-www-jianshu-com-p-94946ca90194"><a href="#3-CORShttps-www-jianshu-com-p-94946ca90194" class="headerlink" title="3. CORShttps://www.jianshu.com/p/94946ca90194"></a>3. CORS<a href="https://www.jianshu.com/p/94946ca90194" target="_blank" rel="noopener">https://www.jianshu.com/p/94946ca90194</a></h4><ul>
-<li><p>优点：功能更强大支持HTTP各种method </p>
+<li><p>设置<code>Expires</code><strong>响应头</strong>来进行web性能优化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Expires'</span>, <span class="string">'Sun, 04 Feb 2018 18:11:05 GM'</span>)</span><br></pre></td></tr></table></figure>
+<p>这是一种老的做法，和<code>Cache-Control</code>相比，<code>Expires</code>设置的是过期的时间点，<code>Cache-Control</code>设置的是时间段。如果用户的系统时间错乱那么<code>Expires</code>就会有bug。</p>
 </li>
-<li><p>缺点：兼容性不如JSONP，要求IE&gt;10 </p>
-</li>
-<li>服务端：若确定接受请求，则在返回结果中加入响应头：Access-Control-Allow-Origin，值为请求方的域名</li>
-<li>CORS的核心就一句话，在服务器端设置响应头</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'frontendSite'</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="4-原生AJAX的几个方法"><a href="#4-原生AJAX的几个方法" class="headerlink" title="4. 原生AJAX的几个方法"></a>4. 原生AJAX的几个方法</h4><ol>
-<li><p>简单的4步走</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();  <span class="comment">// step 1</span></span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'/xxx'</span>);		 <span class="comment">// step 2</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="comment">// step 3</span></span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'success'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send();						 <span class="comment">// step 4</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS 可以设置任意请求header吗？</p>
-<p>第一部分通过 <code>xhr.open(&#39;GET&#39;, &#39;/xxx&#39;)</code> 设置</p>
-<p>第二部分通过 <code>xhr.setHeader(&#39;content-type&#39;, &#39;x-www-form-urlencoded&#39;)</code> 设置</p>
-<p>第四部分通过 <code>xhr.send(&#39;a=1&amp;b=2&#39;)</code> 设置</p>
-</li>
-<li><p>JS 可以获取任意响应header吗？</p>
-<p>第一部分通过 <code>xhr.status</code> / <code>xhr.statusText</code> 获取</p>
-<p>第二部分通过 <code>xhr.getResponseHeader()</code>/<code>xhr.getAllResponseHeaders()</code> 获取</p>
-<p>第四部分通过 <code>xhr.responseText</code> 获取</p>
+</ol>
 </li>
 </ol>
 
@@ -389,7 +386,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://wangjq.net/2018/10/22/同源策略与CORS跨域/" title="同源策略与CORS跨域 & AJAX">http://wangjq.net/2018/10/22/同源策略与CORS跨域/</a>
+    <a href="http://wangjq.net/2018/10/29/Cookie-Session-Cache-Control/" title="Cookie, Session, Cache-Control">http://wangjq.net/2018/10/29/Cookie-Session-Cache-Control/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -402,6 +399,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Cookie-Session-Cache-Control/" rel="tag"># Cookie, Session, Cache-Control</a>
+          
+        </div>
+      
 
       
       
@@ -411,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/21/JSONP/" rel="next" title="JSONP">
-                <i class="fa fa-chevron-left"></i> JSONP
+              <a href="/2018/10/25/原型与原型链/" rel="next" title="原型与原型链">
+                <i class="fa fa-chevron-left"></i> 原型与原型链
               </a>
             
           </div>
@@ -421,8 +424,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/23/在前端引入MVC思想以及会遇到的问题/" rel="prev" title="在前端引入MVC思想以及会遇到的问题">
-                在前端引入MVC思想以及会遇到的问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/20/Git相关/" rel="prev" title="Git相关">
+                Git相关 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -574,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-同源策略"><span class="nav-number">1.</span> <span class="nav-text">1. 同源策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-JSONP"><span class="nav-number">2.</span> <span class="nav-text">2. JSONP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CORShttps-www-jianshu-com-p-94946ca90194"><span class="nav-number">3.</span> <span class="nav-text">3. CORShttps://www.jianshu.com/p/94946ca90194</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-原生AJAX的几个方法"><span class="nav-number">4.</span> <span class="nav-text">4. 原生AJAX的几个方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cookie"><span class="nav-number">1.</span> <span class="nav-text">Cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Seesion"><span class="nav-number">2.</span> <span class="nav-text">Seesion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LocalStorage"><span class="nav-number">3.</span> <span class="nav-text">LocalStorage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SessionStorage"><span class="nav-number">4.</span> <span class="nav-text">SessionStorage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP缓存"><span class="nav-number">5.</span> <span class="nav-text">HTTP缓存</span></a></li></ol></div>
             
 
           </div>
