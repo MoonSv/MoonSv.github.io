@@ -252,6 +252,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/01/02/抽象类和接口/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/02/抽象类和接口/" itemprop="url">抽象类和接口</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T00:24:19+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><ul>
+<li>目的就是用于继承之后定义子类的类，必然会用于定义子类</li>
+<li><strong>抽象类除了不能实例化对象之外</strong>，类的其他功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样</li>
+<li>由于抽象类不能实例化对象，<strong>所以抽象类必须被继承，才能被使用</strong></li>
+<li>使用修饰符<code>abstract</code>声明一个类似抽象类，一般具有抽象方法：<code>abstract void method();</code> 抽象方法只有声明，没有实现</li>
+<li>子类继承抽象类之后，<strong>必须实现抽象方法</strong>，不然仍然为抽象类，可以override其他方法</li>
+<li><code>static</code>方法不能声明为抽象方法</li>
+<li><code>is-a关系</code></li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>抽象类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">NewsReader</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> News <span class="title">readNews</span><span class="params">(String path)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>继承的子类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UrlNewsReader</span> <span class="keyword">extends</span> <span class="title">NewsReader</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> News <span class="title">readNews</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        System.out.println(path);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><ul>
+<li>接口是一系列抽象方法（但不需要abstract修饰，隐式是public abstract）的集合</li>
+<li>语义上表示具有一定的特性，比如：<ul>
+<li>行走：但是没有如何行走的定义</li>
+<li>显示：表示可以显示，但是没有如何显示的定义</li>
+</ul>
+</li>
+<li>接口成员变量只能是<code>static final</code>的，因为它不是类，不能实例化对象，所以不会有状态，只有属性</li>
+<li>类通过关键字<code>implements</code>表达实现一个接口吗，从而<strong>声明</strong>这个类具有接口定义的属性和行为</li>
+<li>类可以实现多个接口！例如表示：一个文件即可以显示也可以打印</li>
+</ul>
+<h3 id="接口和抽象类的共同点"><a href="#接口和抽象类的共同点" class="headerlink" title="接口和抽象类的共同点"></a>接口和抽象类的共同点</h3><ol>
+<li>他们都是上层的抽象层</li>
+<li>都不能被实例化</li>
+<li>都能包含抽象的方法，这些抽象的方法用于描述类具备的功能，但是不提供具体的实现</li>
+</ol>
+<h3 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h3><ol>
+<li><p>在抽象类中可以写非抽象的方法，从而避免在子类中重复书写他们，这样可以提高代码的复用性，这是抽象类的优势；接口中只能写抽象的方法（在接口中写抽象方法可以省列<code>abstract</code>字段）</p>
+</li>
+<li><p>一个类只能<strong>继承一个直接父类</strong>，这个父类可以是具体的类也可以是抽象类；但是一个类可以<strong>实现多个接口</strong></p>
+<blockquote>
+<p>例如喵继承猫科动物类，汪继承犬科动物类，但是喵和汪想使用同样的方法<code>拆家</code>是无法实现的，因为类的继承是单继承。</p>
+<p>但如果猫科动物和犬科动物是接口那么久简单了，再写一个接口让喵和汪实现这个接口就可以使用<code>拆家</code>方法了</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
+<li><p>多态表示一个类型（父类或者接口）变量的方法的具体实现行为由变量指向的具体对象确定</p>
+</li>
+<li><p>主要的实现方式</p>
+<ul>
+<li>继承和接口</li>
+<li>父类和接口类型的变量赋值子类对象</li>
+<li>调用被override的方法</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/12/25/Java封装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -325,7 +494,7 @@
           
             <h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><ul>
 <li>在面向对象程序设计方法中，封装（Encapsulation）是指一种将类实现细节部分包装，隐藏起来的方法</li>
-<li>对类的内部状态的访问进行控制，只提供该提供的信息</li>
+<li>目的：<strong>对类的内部状态的访问进行控制，只提供该提供的信息</strong></li>
 <li>把代码分成两个部分：<strong>接口</strong>和<strong>实现</strong></li>
 <li>接口因为涉及和外部的交互，对用户暴露，<strong>应该保持稳定</strong>。例如API和库</li>
 <li>内部实现不需要暴露给外部用户，在街口功能不被影响的前提下，可以随意修改和重构</li>
@@ -1701,132 +1870,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/20/浏览器也会偷懒-解决无缝轮播的bug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/20/浏览器也会偷懒-解决无缝轮播的bug/" itemprop="url">浏览器也会偷懒-解决无缝轮播的bug</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T11:51:50+08:00">
-                2018-10-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>实现无缝轮播的时候可能会遇到一个小bug：</p>
-<p>当切换到别的页面几秒钟后再切换回原来的轮播页面，会发现轮播图从切出那刻开始就停止，切回来的时候会在短时间内快速完成之前几秒应该做完的轮播，也就是说浏览器在你不“看”它的时候偷懒了，而等你“看”它的时候心虚一样快速的完成之前偷懒的工作。这样用户的体验就是很好了。</p>
-<blockquote>
-<p>解决的办法是当页面切出时，通过监听<code>visibilitychange</code>事件来判断页面是否切出并控制轮播启停。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">`.img-wrap img:nth-child(<span class="subst">$&#123;getIndex(n)&#125;</span>)`</span>).removeClass(<span class="string">"current"</span>).addClass(<span class="string">"leave"</span>).one(<span class="string">'transitionend'</span>, (e) =&gt; &#123;</span><br><span class="line">        $(e.currentTarget).removeClass(<span class="string">"leave"</span>).addClass(<span class="string">"enter"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="string">`.img-wrap img:nth-child(<span class="subst">$&#123;getIndex(n + <span class="number">1</span>)&#125;</span>)`</span>).removeClass(<span class="string">" enter"</span>).addClass(<span class="string">"current"</span>);</span><br><span class="line">    n++;</span><br><span class="line">&#125;, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'visibilitychange'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.hidden) &#123;</span><br><span class="line">        <span class="built_in">window</span>.clearInterval(timer);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="string">`.img-wrap img:nth-child(<span class="subst">$&#123;getIndex(n)&#125;</span>)`</span>).removeClass(<span class="string">"current"</span>).addClass(<span class="string">"leave"</span>).one(<span class="string">'transitionend'</span>, (e) =&gt; &#123;</span><br><span class="line">                $(e.currentTarget).removeClass(<span class="string">"leave"</span>).addClass(<span class="string">"enter"</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">            $(<span class="string">`.img-wrap img:nth-child(<span class="subst">$&#123;getIndex(n + <span class="number">1</span>)&#125;</span>)`</span>).removeClass(<span class="string">" enter"</span>).addClass(<span class="string">"current"</span>);</span><br><span class="line">            n++;</span><br><span class="line">        &#125;, <span class="number">3000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>另外目前轮播比较好的插件是<a href="https://www.swiper.com.cn/demo/index.html" target="_blank" rel="noopener">Swiper</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1877,7 +1920,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1890,7 +1933,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -1956,7 +1999,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-snowflake-o"></i>
   </span>
