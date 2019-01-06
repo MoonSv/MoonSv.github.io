@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Moonstone&#39;s Blog">
 <meta property="og:description" content="抽象类 目的就是用于继承之后定义子类的类，必然会用于定义子类 抽象类除了不能实例化对象之外，类的其他功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样 由于抽象类不能实例化对象，所以抽象类必须被继承，才能被使用 使用修饰符abstract声明一个类似抽象类，一般具有抽象方法：abstract void method(); 抽象方法只有声明，没有实现 子类继承抽象类之后，必须实现抽象方">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-05T07:50:58.819Z">
+<meta property="og:updated_time" content="2019-01-06T05:20:28.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="抽象类和接口">
 <meta name="twitter:description" content="抽象类 目的就是用于继承之后定义子类的类，必然会用于定义子类 抽象类除了不能实例化对象之外，类的其他功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样 由于抽象类不能实例化对象，所以抽象类必须被继承，才能被使用 使用修饰符abstract声明一个类似抽象类，一般具有抽象方法：abstract void method(); 抽象方法只有声明，没有实现 子类继承抽象类之后，必须实现抽象方">
@@ -360,16 +360,44 @@
 </li>
 </ol>
 <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
-<li><p>多态表示一个类型（父类或者接口）变量的方法的具体实现行为由变量指向的具体对象确定</p>
+<li>多态表示一个类型（父类或者接口）变量的方法的具体实现行为由变量指向的具体对象确定</li>
+<li>多态的存在有三个前提：<ol>
+<li>要有继承关系</li>
+<li>子类要重写父类的方法</li>
+<li>父类引用指向子类对</li>
+</ol>
 </li>
-<li><p>主要的实现方式</p>
-<ul>
+<li>主要的实现方式<ul>
 <li>继承和接口</li>
 <li>父类和接口类型的变量赋值子类对象</li>
 <li>调用被override的方法</li>
 </ul>
 </li>
 </ul>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><p>父类Animal：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> age = <span class="number">30</span>;</span><br><span class="line">    <span class="keyword">static</span> String name = <span class="string">"Animal"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Animal is running"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Animal is eating"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>子类Cat：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> age = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">static</span> String name = <span class="string">"Cat"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Cat is runing"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Cat is eating"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">seizeMouse</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Cat is seizing mouse"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Animal cat = <span class="keyword">new</span> Cat();</span><br><span class="line">        cat.run();</span><br><span class="line">        cat.eat();</span><br><span class="line">        System.out.println(cat.age);</span><br><span class="line">        System.out.println(cat.name);</span><br><span class="line">        System.out.println(<span class="string">"----------------------------"</span>);</span><br><span class="line">        Cat cat2 = (Cat) cat;</span><br><span class="line">        cat2.run();</span><br><span class="line">        cat2.eat();</span><br><span class="line">        cat2.seizeMouse();</span><br><span class="line">        System.out.println(cat2.age);</span><br><span class="line">        System.out.println(cat2.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上三段代码充分体现了多态的三个前提，即</p>
+<ol>
+<li><p>存在继承关系</p>
+<p><code>Cat</code>类继承了<code>Animal</code>类</p>
+</li>
+<li><p>子类要重写父类的方法</p>
+<p>子类重写（<code>override</code>）了父类的两个成员方法run(), eat()。其中run()是非静态的，eat()是静态的(<code>static</code>)</p>
+</li>
+<li><p>父类数据类型的引用指向子类对象</p>
+<p>测试类Main中Animal cat = new Cat()；语句在堆内存中开辟了子类(Cat)对象，并把占内存中的父类(Animal)的引用指向了这个Cat对象。</p>
+</li>
+</ol>
+<p>测试结果输出打印：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Cat is runing</span><br><span class="line">Animal is eating</span><br><span class="line">30</span><br><span class="line">Animal</span><br><span class="line">----------------------------</span><br><span class="line">Cat is runing</span><br><span class="line">Cat is eating</span><br><span class="line">Cat is seizing mouse</span><br><span class="line">5</span><br><span class="line">Cat</span><br></pre></td></tr></table></figure>
+<p>从结果可以看出：</p>
+<p><strong>子类Cat重写了父类Animal非静态方法run()，访问的结果为子类自身</strong></p>
+<p><strong>子类Cat重写了父类Animal静态方法eat()，访问的结果为父类自身</strong></p>
+<p><strong>多态无法访问子类特有的成员属性和子类特有的成员方法</strong></p>
 
       
     </div>
@@ -577,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类"><span class="nav-number">1.</span> <span class="nav-text">抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">1.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">2.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口和抽象类的共同点"><span class="nav-number">3.</span> <span class="nav-text">接口和抽象类的共同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口和抽象类的区别"><span class="nav-number">4.</span> <span class="nav-text">接口和抽象类的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">5.</span> <span class="nav-text">多态</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类"><span class="nav-number">1.</span> <span class="nav-text">抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">1.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">2.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口和抽象类的共同点"><span class="nav-number">3.</span> <span class="nav-text">接口和抽象类的共同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口和抽象类的区别"><span class="nav-number">4.</span> <span class="nav-text">接口和抽象类的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">5.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-1"><span class="nav-number">5.1.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></div>
             
 
           </div>
