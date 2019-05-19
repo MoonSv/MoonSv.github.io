@@ -252,6 +252,813 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/29/Cookie-Session-Cache-Control/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/29/Cookie-Session-Cache-Control/" itemprop="url">Cookie, Session, Cache-Control</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T14:09:52+08:00">
+                2018-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><ol>
+<li>服务器通过<code>Set-Cookie</code>头给客户端一串字符串</li>
+<li>客户端每次访问<strong>相同域名</strong>的网站是，必须带上这段字符串</li>
+<li>客户端要在一段时间内保存这个<code>Cookie</code></li>
+<li><code>Cookie</code>默认在用户关闭页面后就失效，后台代码可以任意设置<code>Cookie</code>的过期时间</li>
+</ol>
+</li>
+<li><h4 id="Seesion"><a href="#Seesion" class="headerlink" title="Seesion"></a>Seesion</h4><ol>
+<li>将<code>SeesionID</code>（随机数）通过`Cookie发给客户端</li>
+<li>客户端访问服务器时，服务器读取<code>SessionID</code></li>
+<li>服务器有一块<strong>内存</strong>（哈希表）保存了所有<code>session</code></li>
+<li>通过<code>SessionID</code>我们可以得倒对应用户的隐私信息如<code>id</code>, <code>email</code>等</li>
+<li>这块<strong>内存</strong>（哈希表）就是服务器上的所有<code>session</code></li>
+</ol>
+</li>
+<li><h4 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h4><ol>
+<li><code>LocalStorage</code>跟<code>HTTP</code>无关</li>
+<li><code>HTTP</code>不会带上<code>LocalStorage</code>的值</li>
+<li>只有相同域名的页面才能互相读取<code>LocalStorage</code></li>
+<li>每个域名<code>LocalStorage</code>最大存储量为5Mb（每个浏览器不一样）</li>
+<li>常用场景：记录有没有提示过用户（等不敏感的信息）</li>
+<li><code>LocalStorage</code>永久有效，除非用户清理缓存</li>
+</ol>
+</li>
+<li><h4 id="SessionStorage"><a href="#SessionStorage" class="headerlink" title="SessionStorage"></a>SessionStorage</h4><ol>
+<li>前四点同上</li>
+<li><code>SessionStorage</code>在用户关闭页面后就失效</li>
+</ol>
+</li>
+<li><h4 id="HTTP缓存"><a href="#HTTP缓存" class="headerlink" title="HTTP缓存"></a>HTTP缓存</h4><ol>
+<li><p>设置<code>Cache-Control</code><strong>响应头</strong>来进行web性能优化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Cache-Control'</span>, <span class="string">'max-age=31650000'</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>可以让你的浏览器在一定时间内不访问服务器，直接访问本地的硬盘，这样速度会极快（因为请求都不会被发出去）。</li>
+<li>知乎设置Cache-Control的<code>max-age</code>为365天</li>
+<li>如果需要更新，可以直接在入口处<code>url</code>稍微变一下，跟以前的所有<code>url</code>都不一样，这样浏览器就会发送请求，去更新网页。</li>
+</ol>
+</li>
+<li><p>设置<code>Expires</code><strong>响应头</strong>来进行web性能优化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Expires'</span>, <span class="string">'Sun, 04 Feb 2018 18:11:05 GM'</span>)</span><br></pre></td></tr></table></figure>
+<p>这是一种老的做法，和<code>Cache-Control</code>相比，<code>Expires</code>设置的是过期的时间点，<code>Cache-Control</code>设置的是时间段。如果用户的系统时间错乱那么<code>Expires</code>就会有bug。</p>
+</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/25/原型与原型链/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/25/原型与原型链/" itemprop="url">原型与原型链</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T16:57:22+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>创建对象的3种方法</p>
+<ol>
+<li><p>字面量的方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person1 = &#123;</span><br><span class="line">    name: <span class="string">'Joe'</span>,</span><br><span class="line">    age: <span class="number">17</span>,</span><br><span class="line">    gender: male,</span><br><span class="line">    walk: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"I walk"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="comment">// 实例对象</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用系统的构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person2.name = <span class="string">'Rocky'</span>;</span><br><span class="line">person2.age = <span class="number">18</span>;</span><br><span class="line">person2.gender = <span class="string">'male'</span>;</span><br><span class="line">person2.walk = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"I walk"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Persion</span>(<span class="params">name, age, gender</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = gender;<span class="string">'</span></span><br><span class="line"><span class="string">    this.walk = function()&#123;</span></span><br><span class="line"><span class="string">        console.log("I walk");</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">// 实例话一个对象，并对属性进行初始化</span></span><br><span class="line"><span class="string">var person3 = new Person("Zoe", 17, "female");</span></span><br></pre></td></tr></table></figure>
+<p>只有第三种方法才可以区分类别，也就是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person3 <span class="keyword">instanceof</span> Person <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>当我们写如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line">n.toString();</span><br></pre></td></tr></table></figure>
+<p>的时候，内存发生了什么？为什么简单变量也具有<code>toString()</code>这种方法了呢？</p>
+<p>首先，第一行代码会在栈内存中创建一个简单类型的变量n；当运行第二行代码的时候，程序在堆内存中创建一个<strong>临时</strong>的Number对象，此对象会调用其内部的<code>toString()</code>方法，调用之后此临时对象就会<strong>自动销毁</strong></p>
+</li>
+<li><p>原型</p>
+<ol>
+<li><p>作用之一：数据共享，节省内存空间</p>
+</li>
+<li><ol>
+<li>实例对象中的<code>__proto__</code>也是对象，叫原型，但不是标准的属性，是供浏览器使用的</li>
+<li>构造函数中也有一个属性叫做<code>prototype</code>，也是对象，叫原型，是标准的属性，供程序员使用</li>
+<li><code>per.__proto__ === Person.prototype //true</code></li>
+</ol>
+</li>
+<li><p>作用之二：实现继承</p>
+</li>
+<li><p>构造函数、实例对象、原型对象三者的关系：</p>
+<ul>
+<li><p>构造函数可以实例化对象</p>
+</li>
+<li><p>构造函数中有一个属性叫prototype，是构造函数的原型对象</p>
+</li>
+<li>构造函数的原型对象(prototype)中有一个constructor构造器，这个构造器指向的就是自己所在的原型对象所在的构造函数</li>
+<li>实例对象的原型对象(<code>__proto__</code>)指向的是该构造函数的原型对象</li>
+<li>构造函数的原型对象(<code>prototype</code>)中的方法是可以被实例对象直接访问的</li>
+</ul>
+</li>
+<li><p>不需要共享的数据写在构造函数中，需要共享的数据写在原型中</p>
+</li>
+<li><p>原型的简单写法(必须手动修改构造器的指向)</p>
+</li>
+<li><p>原型中的方法，是可以相互调用的</p>
+</li>
+<li><p>属性和方法的层层搜索(为<code>原型链</code>做铺垫)：实例对象中如果没有这个属性或者这个方法，才会去原型对象中找，但如果有，则直接用</p>
+</li>
+</ol>
+</li>
+<li><p>原型链：是一种实例对象和原型对象之间的关系，关系是通过原型(<code>__proto__</code>)来联系的</p>
+<ul>
+<li>实例对象的原型<code>__proto__</code>指向的是该对象所在的构造函数的原型对象</li>
+<li>只要是对象，那么就有<code>__proto__</code>，而这个<code>__proto__</code>一定指向的是某个构造函数的原型(<code>prototype</code>)</li>
+<li>而对象的构造函数的原型对象也有一个<code>__proto__</code>，指向为<code>Object</code>的原型(<code>prototype</code>)，而<code>Object</code>的原型对象的<code>__proto__</code>是<code>null</code></li>
+<li>构造函数的原型对象(<code>prototype</code>)指向如果改变了，实例丢向的原型(<code>__proto__</code>)指向也会发生改变</li>
+<li>原型的指向是可以改变的 </li>
+<li>实例对象和原型对象之间的关系是通过<code>__proto__</code>原型来联系起来的，这个关系就是原型链</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/23/在前端引入MVC思想以及会遇到的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/23/在前端引入MVC思想以及会遇到的问题/" itemprop="url">在前端引入MVC思想以及会遇到的问题</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T23:43:52+08:00">
+                2018-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。</p>
+<p>不似springMVC，我们现在可以简单的把前端不同功能的<code>function</code>分为不同的<code>Modal</code>。而每一部分<code>Modal</code>对应的视图部分我们可以称之为<code>View</code>，在每个<code>Modal</code>里，控制对应<code>View</code>的部分称之为<code>Controller</code>。</p>
+<p>MVC是一种代码分层思想，Model 和服务器交互，Model 将得到的数据交给 Controller，Controller 把数据填入 View，并监听 View<br>用户操作 View，如点击按钮，Controller 就会接受到点击事件，Controller 这时会去调用 Model，Model 会与服务器交互，得到数据后返回给 Controller，Controller 得到数据就去更新 View</p>
+<p>Model负责数据层, 主要负责前后端的数据交互</p>
+<p>VIew负责视图, 就是将页面呈现给用户</p>
+<p>Controller负责具体的业务逻辑实现, 就是除了视图显示和前后端数据交互之外的所有东西</p>
+<p>MVC的好处：职责分明，模块清晰，代码简单。</p>
+<p>在引入<code>MVC</code>思想之后，发现我们并不想要全局变量而想使用局部变量，可在ES 5中，只有函数才具有局部变量，于是我们声明一个function并且立即执行，如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;.call();</span><br></pre></td></tr></table></figure>
+<p>但是这种写法在Chrome中会报错说语法错误，所以我们需要使用下述写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;.call(); <span class="comment">// 我们不在乎这个匿名函数的返回值，所以加个!取反没关系</span></span><br></pre></td></tr></table></figure>
+<p>下面举个例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'Catherine'</span>,</span><br><span class="line">        age: <span class="number">17</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，立即执行函数使得<code>person</code>无法被外部访问，但若我们一定要操作<code>person</code>应该怎么办呢？我们可以使用<code>闭包</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'Catherine'</span>,</span><br><span class="line">        age: <span class="number">17</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.ageGrowUp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        person.age += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> person.age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
+<p>所以<code>window.ageGrowUp</code>保存了匿名函数的地址，任何地方都可以使用<code>window.ageGrowUp</code>来操作<code>person.age</code>，但是不能直接访问<code>person</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/22/同源策略与CORS跨域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/22/同源策略与CORS跨域/" itemprop="url">同源策略与CORS跨域 & AJAX</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T01:13:26+08:00">
+                2018-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Question: 为什么form等请求可以跨域，而AJAX请求无法跨域？</p>
+<blockquote>
+<p>因为原页面用form提交到另一个域名之后，原页面的脚本无法获取新页面中的内容。</p>
+<p>所以浏览器认为这是安全的。</p>
+<p>而AJAX是可以<strong>读取相应内容的</strong>， 因此浏览器不能允许你这样做。</p>
+<p>如果你细心的话会发现，其实请求已经发送出去了，你只是拿不到响应而已。</p>
+<p>所以浏览器这个策略的本质是，一个域名的JS，在未经允许的情况下，不得读取另一个域名的内容。但浏览器并不阻止逆向另一个域名发送请求。</p>
+</blockquote>
+<h4 id="1-同源策略"><a href="#1-同源策略" class="headerlink" title="1. 同源策略"></a>1. 同源策略</h4><p><a href="https://earthsplitter.github.io/2017/03/21/%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96%E4%B8%8E%E8%B7%A8%E5%9F%9F%E8%AF%A6%E8%A7%A3/" target="_blank" rel="noopener">https://earthsplitter.github.io/2017/03/21/%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96%E4%B8%8E%E8%B7%A8%E5%9F%9F%E8%AF%A6%E8%A7%A3/</a></p>
+<ul>
+<li><p>协议相同(FTP, HTTP)</p>
+</li>
+<li><p>域名相同</p>
+</li>
+<li><p>端口相同</p>
+<p>目的: 为了保护用户隐私，防止身份伪造等 </p>
+</li>
+</ul>
+<h4 id="2-JSONP"><a href="#2-JSONP" class="headerlink" title="2. JSONP"></a>2. JSONP</h4><ul>
+<li><p>优点：兼容性好 </p>
+</li>
+<li><p>缺点：仅支持GET方法具有局限性 </p>
+</li>
+<li>其设计思路是浏览器对<script>标签不做限制，因此可以利用这一点进行跨域请求 </li>
+<li>很简单，就是利用<script>标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个<script>元素，地址指向第三方的API网址，形如：<script src="<http://www.example.net/api?param1=1¶m2=2>"></script> 并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback({“name”:”hax”,”gender”:”Male”})。这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。补充：“历史遗迹”的意思就是，如果在今天重新设计的话，也许就不会允许这样简单的跨域了嘿，比如可能像XHR一样按照CORS规范要求服务器发送特定的http头。 </li>
+</ul>
+<h4 id="3-CORShttps-www-jianshu-com-p-94946ca90194"><a href="#3-CORShttps-www-jianshu-com-p-94946ca90194" class="headerlink" title="3. CORShttps://www.jianshu.com/p/94946ca90194"></a>3. CORS<a href="https://www.jianshu.com/p/94946ca90194" target="_blank" rel="noopener">https://www.jianshu.com/p/94946ca90194</a></h4><ul>
+<li><p>优点：功能更强大支持HTTP各种method </p>
+</li>
+<li><p>缺点：兼容性不如JSONP，要求IE&gt;10 </p>
+</li>
+<li>服务端：若确定接受请求，则在返回结果中加入响应头：Access-Control-Allow-Origin，值为请求方的域名</li>
+<li>CORS的核心就一句话，在服务器端设置响应头</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'frontendSite'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="4-原生AJAX的几个方法"><a href="#4-原生AJAX的几个方法" class="headerlink" title="4. 原生AJAX的几个方法"></a>4. 原生AJAX的几个方法</h4><ol>
+<li><p>简单的4步走</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();  <span class="comment">// step 1</span></span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'/xxx'</span>);		 <span class="comment">// step 2</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="comment">// step 3</span></span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'success'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send();						 <span class="comment">// step 4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JS 可以设置任意请求header吗？</p>
+<p>第一部分通过 <code>xhr.open(&#39;GET&#39;, &#39;/xxx&#39;)</code> 设置</p>
+<p>第二部分通过 <code>xhr.setHeader(&#39;content-type&#39;, &#39;x-www-form-urlencoded&#39;)</code> 设置</p>
+<p>第四部分通过 <code>xhr.send(&#39;a=1&amp;b=2&#39;)</code> 设置</p>
+</li>
+<li><p>JS 可以获取任意响应header吗？</p>
+<p>第一部分通过 <code>xhr.status</code> / <code>xhr.statusText</code> 获取</p>
+<p>第二部分通过 <code>xhr.getResponseHeader()</code>/<code>xhr.getAllResponseHeaders()</code> 获取</p>
+<p>第四部分通过 <code>xhr.responseText</code> 获取</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/21/JSONP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/21/JSONP/" itemprop="url">JSONP</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T23:01:51+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JSONP不是什么高大上的东西，简单地来说：</p>
+<p>请求方：frontend.com (浏览器)</p>
+<p>响应房：backend.com (服务器)</p>
+<ol>
+<li><p>请求方创建动态<code>script</code>，其中标签的<code>src</code>指向响应方，假设请求方的回调函数名称是<code>renderPayment</code>，我们就需要同时传一个查询参数<code>callbackName=renderPayment</code>给响应方</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"click"</span>&gt;</span>click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">click.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">    <span class="keyword">let</span> functionName = <span class="string">'f'</span> + <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">100000</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">window</span>[functionName] = <span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`the result from back end is <span class="subst">$&#123;result&#125;</span>!`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = <span class="string">`127.0.0.1:8001/pay?callbackName=<span class="subst">$&#123;functionName&#125;</span>`</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// delete script tag when finish the request</span></span><br><span class="line">    script.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">        e.currentTarget.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当然我们可以使用jQuery用更简洁的代码实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'127.0.0.1:8001/pay'</span>,</span><br><span class="line">    dataType: <span class="string">'jsonp'</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`the result from back end is <span class="subst">$&#123;response&#125;</span>!`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>响应方根据查询参数<code>callbackName</code>，构造类似</p>
+<ul>
+<li><code>renderPayment.call(undefined, &#39;请求方要的数据&#39;)</code></li>
+<li><code>renderPayment(&#39;请求方要的数据&#39;)</code></li>
+</ul>
+<p>这样的响应</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (path === <span class="string">'/pay'</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> amount = fs.readFileSync(<span class="string">'./db'</span>, <span class="string">'utf8'</span>)</span><br><span class="line">    amount -= <span class="number">1</span></span><br><span class="line">    fs.writeFileSync(<span class="string">'./db'</span>, amount)</span><br><span class="line">    <span class="keyword">let</span> callbackName = query.callback</span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/javascript'</span>)</span><br><span class="line">    response.write(<span class="string">`</span></span><br><span class="line"><span class="string">        <span class="subst">$&#123;callbackName&#125;</span>.call(undefined, 'success')</span></span><br><span class="line"><span class="string">    `</span>)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>浏览器接收到响应后，就会执行<code>renderPayment.call(undefined, &#39;请求方要的数据&#39;)</code></p>
+</li>
+<li><p>那么请求方就获得了想要的数据并且完成处理</p>
+</li>
+</ol>
+<p><strong>这就是JSONP</strong></p>
+<p>下面是一些约定成俗的东西：</p>
+<ol>
+<li>GET请求中的查询参数通常为<code>callback</code></li>
+<li>回调函数名通常为<code>非数字+随机数</code>，如<code>j48174940</code></li>
+</ol>
+<p>最后记录一道面试题：为什么JSONP不支持POST请求？</p>
+<p>Answer：</p>
+<ol>
+<li>因为<code>JSONP</code>是通过动态创建<code>script标签</code>实现的</li>
+<li>动态创建<code>script</code>的时候只能用<code>GET</code>，无法使用<code>POST</code></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/20/浏览器也会偷懒-解决无缝轮播的bug/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -450,7 +1257,7 @@
         
           
             <p>学习了事件模型之后，发现概念可以背的滚瓜烂熟，但是对于事件冒泡和事件捕获究竟在什么场景使用还是比较模糊，所以这里介绍一个简单的<strong>例子</strong>可以帮助更好的理解<strong>事件冒泡</strong>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .wrapper&#123;</span></span><br><span class="line"><span class="undefined">        position: relative;</span></span><br><span class="line"><span class="undefined">        display: inline-block;</span></span><br><span class="line"><span class="undefined">        transition: all 0.3s;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .modal&#123;</span></span><br><span class="line"><span class="undefined">        border: 1px solid grey;</span></span><br><span class="line"><span class="undefined">        border-radius: 5px;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        left: 100%;</span></span><br><span class="line"><span class="undefined">        top: 0;</span></span><br><span class="line"><span class="undefined">        white-space: nowrap;</span></span><br><span class="line"><span class="undefined">        padding: 10px;</span></span><br><span class="line"><span class="undefined">        margin-left: 10px;</span></span><br><span class="line"><span class="undefined">        display: none;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .modal::before&#123;</span></span><br><span class="line"><span class="undefined">        content: '';</span></span><br><span class="line"><span class="undefined">        border: 10px solid transparent;</span></span><br><span class="line"><span class="undefined">        border-right: 10px solid grey;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        right: 100%;</span></span><br><span class="line"><span class="undefined">        top: 3px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .modal::after&#123;</span></span><br><span class="line"><span class="undefined">        content: '';</span></span><br><span class="line"><span class="undefined">        border: 10px solid transparent;</span></span><br><span class="line"><span class="undefined">        border-right: 10px solid #fff;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        right: 100%;</span></span><br><span class="line"><span class="undefined">        top: 3px;</span></span><br><span class="line"><span class="undefined">        margin-right: -1px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"click"</span>&gt;</span></span><br><span class="line">        click me</span><br><span class="line">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal"</span>&gt;</span></span><br><span class="line">        This is the modal content</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    $(<span class="string">".wrapper"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="undefined">        e.stopPropagation();</span></span><br><span class="line"><span class="javascript">        $(<span class="string">".modal"</span>).show();</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    $(<span class="string">"html"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        $(<span class="string">".modal"</span>).hide();</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.wrapper</span>&#123;</span></span><br><span class="line"><span class="undefined">        position: relative;</span></span><br><span class="line"><span class="undefined">        display: inline-block;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">transition</span>: <span class="selector-tag">all</span> 0<span class="selector-class">.3s</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.modal</span>&#123;</span></span><br><span class="line"><span class="undefined">        border: 1px solid grey;</span></span><br><span class="line"><span class="undefined">        border-radius: 5px;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        left: 100%;</span></span><br><span class="line"><span class="undefined">        top: 0;</span></span><br><span class="line"><span class="undefined">        white-space: nowrap;</span></span><br><span class="line"><span class="undefined">        padding: 10px;</span></span><br><span class="line"><span class="undefined">        margin-left: 10px;</span></span><br><span class="line"><span class="undefined">        display: none;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.modal</span><span class="selector-pseudo">::before</span>&#123;</span></span><br><span class="line"><span class="undefined">        content: '';</span></span><br><span class="line"><span class="undefined">        border: 10px solid transparent;</span></span><br><span class="line"><span class="undefined">        border-right: 10px solid grey;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        right: 100%;</span></span><br><span class="line"><span class="undefined">        top: 3px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.modal</span><span class="selector-pseudo">::after</span>&#123;</span></span><br><span class="line"><span class="undefined">        content: '';</span></span><br><span class="line"><span class="undefined">        border: 10px solid transparent;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">border-right</span>: 10<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#fff</span>;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        right: 100%;</span></span><br><span class="line"><span class="undefined">        top: 3px;</span></span><br><span class="line"><span class="undefined">        margin-right: -1px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"click"</span>&gt;</span></span><br><span class="line">        click me</span><br><span class="line">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal"</span>&gt;</span></span><br><span class="line">        This is the modal content</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    $(<span class="string">".wrapper"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="undefined">        e.stopPropagation();</span></span><br><span class="line"><span class="javascript">        $(<span class="string">".modal"</span>).show();</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    $(<span class="string">"html"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        $(<span class="string">".modal"</span>).hide();</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>在这里通过对wapper添加阻止事件传播<code>e.stopPropagation()</code>来阻止冒泡。</p>
 <hr>
 <p>以上是通过阻止事件传播的方法，下面介绍一种优化的省内存方法</p>
@@ -917,844 +1724,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/04/DOM-API-event-，虚拟DOM深入理解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/04/DOM-API-event-，虚拟DOM深入理解/" itemprop="url">DOM(API, event)，虚拟DOM深入理解</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T14:06:26+08:00">
-                2018-10-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-DOM简介"><a href="#1-DOM简介" class="headerlink" title="1. DOM简介"></a>1. DOM简介</h3><p>Document Object Model: 把文档和对象对应起来的模型叫DOM</p>
-<ul>
-<li><code>meta</code>, <code>title</code>, <code>script</code>, 等等都是<strong>Element</strong>对象， <code>html</code>属于<strong>Document</strong>对象</li>
-<li><code>h1</code>, <code>h2</code>, <code>p</code>等中的文本属于<strong>Text</strong>对象。</li>
-<li>注释属于<strong>Comment</strong>对象</li>
-<li>这3种对象有一个共同的祖先：<strong>Node</strong></li>
-<li>DOM的最小组成单位叫做<strong>Node</strong></li>
-<li>DOM树的根节点是<code>HTML</code></li>
-</ul>
-<h3 id="2-碎知识整理"><a href="#2-碎知识整理" class="headerlink" title="2. 碎知识整理"></a>2. 碎知识整理</h3><ol>
-<li>Node的接口（属性和方法）</li>
-</ol>
-<ul>
-<li>innerText和textContent区别：前者是由IE浏览器引入的，后者是之后由Firefox和Opera引入的. <strong><code>textContent</code></strong>会获取所有元素的内容，包括<font color="darkgreen"> script标签和style标签里的文字内容 </font></li>
-<li><code>removeChild()</code>只是将元素从页面中移除，但内存中还存在</li>
-<li>nextSibling可能会获取到文本，因为在html中，标签之间的<font color="darkgreen">回车</font>属于文本</li>
-<li>nodeType需要背，<font color="darkgreen">1表示节点，3表示文本</font></li>
-<li>cloneNode()可以传参数<code>true</code>来表示是否为深度克隆，深度克隆会将所有的子元素都克隆下来</li>
-<li><code>parent.childNodes</code> 是<strong>动态集合</strong>。所谓动态集合就是一个活的集合，DOM树删除或新增一个相关节点，都会立刻反映在NodeList接口之中。</li>
-<li><code>document.querySelectorAll</code>方法返回的是一个<strong>静态集合</strong>。DOM内部的变化，并不会实时反映在该方法的返回结果之中。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/30/JS动画与缓动/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/30/JS动画与缓动/" itemprop="url">JS动画与缓动</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-30T22:44:36+08:00">
-                2018-09-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/30/JS回顾系列（二）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/30/JS回顾系列（二）/" itemprop="url">JS回顾系列（二）</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-30T16:39:44+08:00">
-                2018-09-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="常用api："><a href="#常用api：" class="headerlink" title="常用api："></a>常用api：</h4><ol>
-<li><p><code>node.nodeType</code>，<code>1</code>表示节点，<code>3</code>表示文本。使用情景：因为nextSibling有bug（有些浏览器内核认为两个tag之间存在回车，所以nextSibling可能会取到回车） </p>
-<ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bro  = target.nextSibling;</span><br><span class="line"><span class="keyword">while</span>(bro.nodeType === <span class="number">3</span>)&#123;</span><br><span class="line">    bro = bro.nextSibling;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p><code>node.tagName</code>返回的值是大写字母，如<code>&lt;ul&gt;&lt;/ul&gt;</code>的tagName为<code>&#39;UL&#39;</code></p>
-</li>
-<li><p><code>document.querySelectorAll(&#39;#div ul li&#39;);</code></p>
-</li>
-<li><p><code>node.parentNode.children</code></p>
-</li>
-</ol>
-<h4 id="JS动画与缓动"><a href="#JS动画与缓动" class="headerlink" title="JS动画与缓动"></a>JS动画与缓动</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">div.style.position = <span class="string">"relative"</span>;</span><br><span class="line">div.style.left = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> id = setInterval(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    n = n + <span class="number">1</span>;</span><br><span class="line">    div.style.left = n + <span class="string">'px'</span>;</span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="built_in">window</span>.clearInterval(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="number">40</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>实用插件：<a href="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js" target="_blank" rel="noopener">tween.js</a></li>
-</ul>
-<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><ol>
-<li><p><code>let a = [&#39;a&#39;,&#39;b&#39;]</code>等价于<code>let a = new Array(&#39;a&#39;,&#39;b&#39;)</code></p>
-</li>
-<li><h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h4><p><code>forEach(function(x, y))</code>，<code>forEach()</code>接受的是<strong>函数</strong>，函数必须接受两个参数，前者是<code>value</code>，后者是<code>index</code></p>
-</li>
-<li><h4 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h4><p><code>array.sort()</code>默认为正序排序，<code>sort</code>可以接受一个函数作为参数来改变排序顺序。如：</p>
-<ul>
-<li><p><code>array.sort((x, y) =&gt; x-y)</code>正序</p>
-</li>
-<li><p><code>array.sort((x, y) =&gt; y-x)</code>倒序</p>
-</li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同理可以根据hash的value来排序 </span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'palm'</span>];</span><br><span class="line"><span class="keyword">let</span> hash = &#123;<span class="string">'apple'</span>: <span class="number">10</span>, <span class="string">'banana'</span>: <span class="number">5</span>, <span class="string">'palm'</span>: <span class="number">20</span>&#125;;</span><br><span class="line">array.sort( <span class="function">(<span class="params">x, y</span>) =&gt;</span> hash[x] - hash[y] ); <span class="comment">// ['banana', 'apple', 'palm']</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><h4 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h4><ul>
-<li><p>和Python的join用法一样，用于数据转换成字符串</p>
-</li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> str = a.join(<span class="string">'+'</span>) <span class="comment">// "1+2+3"</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><h4 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h4><ul>
-<li><p>用于连接合并两个数组。在JavaScript中，数组a + 数组b的结果是两个数组.toString()后进行字符串的合并，并不可以用于合并两个数组。所以需要<code>concat()</code>方法。</p>
-</li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line">a.concat(b) <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>也用于复制一个数组（深度拷贝）</strong></p>
-</li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> b = a.concat([]);</span><br><span class="line">b === a <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><h4 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h4><ul>
-<li><p><code>map</code>和<code>forEach</code>几乎是一模一样的，唯一不同的地方在于<code>forEach</code>运行完之后不会返回任何值，而<code>map</code>会将运行结果重新生成一个新数组进行返回。</p>
-</li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">a.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">a.map(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// [2,4,6]</span></span><br><span class="line"><span class="comment">// 用ES6可以更美观地写成</span></span><br><span class="line">a.map(<span class="function"><span class="params">value</span> =&gt;</span> value * <span class="number">2</span>)</span><br><span class="line"><span class="comment">// [2,4,6]</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><h4 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 得到所有偶数的平方</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line">a.filter(<span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;).map(<span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算所有奇数的和</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line">a.reduce(<span class="function">(<span class="params">sum, n</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(n % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">        sum += n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>伪数组，通俗地讲就是长的像数组的对象。<code>伪数组.__proto !== Array.prototype</code></p>
-</li>
-</ol>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ol>
-<li><p>现在大家基本上都用<code>foo(1,2)</code>这种方式来调用函数，但JS真正调用函数的硬核方法为<code>foo.call(undefined, 1, 2)</code></p>
-<ul>
-<li><p>call的第一个参数可以用<code>this</code>得到</p>
-</li>
-<li><p>call除第一个参数后面的所有参数可以用<code>arguments</code>得到</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">f.call(<span class="literal">undefined</span>); <span class="comment">// window</span></span><br><span class="line">f.call(<span class="number">1</span>); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>闭包：如果一个函数使用了其作用域之外的变量，那么（变量+函数）就被称作闭包</p>
-</li>
-<li><p>做题时一定要考虑到变量提升，例如</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">f1.call(<span class="literal">undefined</span>) <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 上述代码根据变量提升可以看成：</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 所以可知console.log里a的值只是声明了还未被定义，即undefined</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/29/JS简单类型和对象的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/29/JS简单类型和对象的区别/" itemprop="url">JS简单类型和对象的区别</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T22:44:58+08:00">
-                2018-09-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>简单类型与对象的主要区别就是简单类型是存储在栈内存当中的，而对象是存储在堆内存当中的。</p>
-<ol>
-<li><p><code>var a = 1</code>和<code>var a = new Number(1)</code>的区别：</p>
-<p>前者是简单类型，后者是对象。后者具有一些内在API如<code>toExponential()</code>, <code>valueOf()</code>, <code>toString()</code>等</p>
-<p>但其实前者也可以直接使用这些API，是什么原因呢？</p>
-<blockquote>
-<p>JS之父在开发语言中，会在简单类型欲调用API时，先创建一个临时对象，比如对于number类型就会创建一个<code>var tmp = new Number(a)</code>，当调用API时，实际是临时对象在调用。</p>
-</blockquote>
-</li>
-<li><p>String的常用API介绍</p>
-<ol>
-<li><code>trim()</code>:  去掉头尾空格</li>
-<li>slice(0, 2): 切片</li>
-<li>includes(‘a’): 是否有某个字符</li>
-<li>chartAt(2): index为2的地方是哪个字符</li>
-<li>IndexOf(‘a’): 查看某个字符的index</li>
-</ol>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/29/JS回顾系列（一）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/29/JS回顾系列（一）/" itemprop="url">JS回顾系列（一）</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T14:49:57+08:00">
-                2018-09-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="JavaScript数据类型"><a href="#JavaScript数据类型" class="headerlink" title="JavaScript数据类型"></a>JavaScript数据类型</h3><ol>
-<li><h5 id="JS中7中数据类型"><a href="#JS中7中数据类型" class="headerlink" title="JS中7中数据类型"></a>JS中7中数据类型</h5><ul>
-<li><code>Number</code>, <code>null</code>, <code>undefined</code>,  <code>String</code>, <code>Symbol</code>, <code>Boolean</code>,<code>Object</code></li>
-<li>其中，除<code>Object</code>外的前6种数据类型被称为<strong>基本类型</strong>或<strong>简单类型</strong></li>
-</ul>
-</li>
-<li><h5 id="Number"><a href="#Number" class="headerlink" title="Number"></a><code>Number</code></h5><ul>
-<li><code>Number</code>中需要记忆的点是<ul>
-<li>二进制都是以0b开头，如0b11为3（十进制），</li>
-<li>八进制以0开头，如<code>011</code>为9（十进制）。这是一个需要注意的点，例如电话号码<code>0105176531</code>就不能存成Number形式，否则会被认为是八进制，应该存成String类型。</li>
-<li>十六进制以0x开头，如<code>0x11</code>为17（十进制）。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h5 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a><code>null</code>和<code>undefined</code></h5><ul>
-<li>如果变量没有值，那么就是<code>undefined</code>。</li>
-<li>惯例：<ul>
-<li>如果有一个对象，但现在不想给值，那么就给一个<code>null</code>。</li>
-<li>如果有一个非对象(number, string等)，但现在不想给值，那么就给一个<code>undefined</code>。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h5 id="Object"><a href="#Object" class="headerlink" title="Object"></a><code>Object</code></h5><ul>
-<li>对象中的key的格式为字符串，但在定义时可以加引号也可以不加，但如果不加引号则必须满足标识符规范。</li>
-<li>取key时可以写成<code>person[&#39;name&#39;]</code>，当引号内的值满足标识符规范的情况下，可以写成<code>person.name</code></li>
-<li><strong><code>in</code></strong>， 可以用<code>in</code>来判断该对象是否有某属性，如<code>&#39;name&#39; in person</code>返回true存在，false不存在。</li>
-<li><strong>删掉</strong><code>object</code>中某属性：<code>delete person[&#39;name&#39;]</code></li>
-<li><strong><code>for...in</code></strong>，遍历<code>object</code></li>
-<li><code>typeof</code>查看变量属于什么类型</li>
-</ul>
-</li>
-</ol>
-<h3 id="JavaScript里的数据类型转换"><a href="#JavaScript里的数据类型转换" class="headerlink" title="JavaScript里的数据类型转换"></a>JavaScript里的数据类型转换</h3><ol>
-<li><h5 id="其他类型转为string"><a href="#其他类型转为string" class="headerlink" title="其他类型转为string"></a>其他类型转为string</h5><ul>
-<li>可以采用<code>xx.tostring()</code>方法，但对null支持不加</li>
-<li>全局函数<code>String(xx)</code></li>
-<li><strong>更流行</strong>的方法是<code>xx + &#39;&#39;</code></li>
-</ul>
-</li>
-<li><h5 id="转为boolean"><a href="#转为boolean" class="headerlink" title="转为boolean"></a>转为boolean</h5><ul>
-<li>全局方法<code>Boolean(xx)</code>。这里<strong>需要记住的一点</strong>是：<ul>
-<li><code>Boolean(&#39;&#39;)</code>的值为<code>false</code>而<code>Boolean({})</code>的值为<code>true</code></li>
-</ul>
-</li>
-<li><strong>要记住5个falsy值</strong>（falsy是在Boolean上下文中认定可转换为false的值）<ul>
-<li>number里的<code>0</code>和<code>NaN</code></li>
-<li>string里的<code>&#39;&#39;</code></li>
-<li><code>null</code></li>
-<li><code>undefined</code></li>
-</ul>
-</li>
-<li>所有的对象都是<code>true</code></li>
-</ul>
-</li>
-<li><h5 id="转为number"><a href="#转为number" class="headerlink" title="转为number"></a>转为number</h5><ul>
-<li>全局方法<code>Number(&#39;1&#39;)</code></li>
-<li><code>parseInt(&#39;1&#39;, 10)</code>，<code>parseInt(&#39;123silence&#39;, 10)</code>这里会解析到123</li>
-<li><code>parseFloat(&#39;1.23&#39;)</code></li>
-<li><code>&#39;1&#39; - 0</code>这种方法被程序员广泛使用</li>
-<li><code>+ &#39;1&#39;</code></li>
-</ul>
-</li>
-</ol>
-<h3 id="JavaScript-内存"><a href="#JavaScript-内存" class="headerlink" title="JavaScript 内存"></a>JavaScript 内存</h3><ul>
-<li><p>在JavaScript中，有内存被分为stack（栈内存）和heap（堆内存）。</p>
-</li>
-<li><p>所有简单数据类型（6个）都会被存在栈内存。</p>
-</li>
-<li><p>而复杂类型会在栈内存中存一个地址，地址指向堆内存的某个区域，这个区域存放着实际的数据。</p>
-</li>
-</ul>
-<p><strong>3个内存题目：</strong></p>
-<ol>
-<li><ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span> : <span class="string">'Jack'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = &#123;<span class="attr">name</span>: <span class="string">'Lorry'</span>&#125;;</span><br><span class="line">a[<span class="string">'name'</span>] = ?    <span class="comment">// Jack</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'Jack'</span>&#125;；</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b.name = <span class="string">'Lorry'</span>;</span><br><span class="line">a[<span class="string">'name'</span>] = ?    <span class="comment">// Lorry</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'Jack'</span>&#125;；</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = <span class="literal">null</span>;</span><br><span class="line">a = ?    <span class="comment">// &#123;name: 'Jack'&#125;;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>这里的考点是在第3行的<code>a.x</code>其实还是原来的a，后面a又有了新地址，所以x是给了原来的老地址，而b一直指向的是老地址</p>
-<ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>: <span class="number">1</span>&#125;；</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>: <span class="number">2</span>&#125;</span><br><span class="line">a.x = ?    <span class="comment">// undefined </span></span><br><span class="line">b.x = ?    <span class="comment">// [object Object]</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><h6 id="什么是垃圾？"><a href="#什么是垃圾？" class="headerlink" title="什么是垃圾？"></a>什么是垃圾？</h6><ul>
-<li>如果一个对象没有被引用，那么它就是垃圾</li>
-</ul>
-<h6 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">document</span>.body.onclick = fn;</span><br><span class="line">fn = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// function()&#123;&#125;是不是垃圾？</span></span><br><span class="line"><span class="comment">// 答案是否定的，通过想象内存图可得知function()依然被document.body.onclick所引用着</span></span><br></pre></td></tr></table></figure>
-<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ol>
-<li><h4 id="数组的本质"><a href="#数组的本质" class="headerlink" title="数组的本质"></a>数组的本质</h4><p>本质上，数组属于一种特殊的对象。<code>typeof</code>运算符会返回数组的类型是<code>object</code>。</p>
-</li>
-<li><p>length属性</p>
-<ul>
-<li><p>数组的<code>length</code>属性，返回数组的成员数量。</p>
-</li>
-<li><p><code>length</code>属性是可写的。如果人为设置一个小于当前成员个数的值，该数组的成员会自动减少到<code>length</code>设置的值。</p>
-</li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line">arr.length <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line">arr.length = <span class="number">2</span>;</span><br><span class="line">arr <span class="comment">// ['a', 'b']</span></span><br></pre></td></tr></table></figure>
-<p>上面代码表示，当数组的<code>length</code>属性设为2（即最大的整数键只能是1）那么整数键2（值为<code>c</code>）就已经不在数组中了，被自动删除了。</p>
-<p>清空数组的一个有效方法，就是将<code>length</code>属性设为0。</p>
-</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1800,7 +1774,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1813,7 +1787,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

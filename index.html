@@ -252,6 +252,718 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/05/19/控制反转和依赖注入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/19/控制反转和依赖注入/" itemprop="url">控制反转和依赖注入</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-19T23:17:38+08:00">
+                2019-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h4><p>Inversion of Control 是一种面向对象编程的一种设计原则，用来降低计算机代码之间的耦合度，比如：</p>
+<p>A依赖于B，一种写法是在类A里面使用<code>new</code>创建一个类B的对象，这就是一般所说的<strong>A控制B的创建和销毁</strong></p>
+<p>而<em>控制反转</em>则是让A移交出这个创建权给A的外部，由外部（相对于A）<strong>控制B的创建与销毁</strong>。这样就实现了B的创建和生命周期逻辑和A的解耦。</p>
+<p>要思考封装和控制反转的微妙关系（一个是聚起来，一个是把创建逻辑分出去）。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/04/09/Java线程与进程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/09/Java线程与进程/" itemprop="url">Java线程与进程</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T14:55:36+08:00">
+                2019-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有一句话可以总结线程和进程的关系： <strong>线程是进程的容器</strong></p>
+<p>主线程的重要性体现在：</p>
+<ul>
+<li>它是其他子线程的线程</li>
+<li>通常它必须最后完成执行，因为它执行各种关闭动作</li>
+</ul>
+<p>主线程是运行程序时候自动创建的，但是其也是一个<strong>Thread类的实例对象</strong></p>
+<p><strong>线程同步</strong></p>
+<p>什么是同步？</p>
+<p>当两个或两个以上的线程需要共享资源，它们需要某种方法来确定资源在某一刻仅被一个线程占用。达到此目的的过程叫做同步(Synchronization)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/03/05/Agile-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/Agile-learning/" itemprop="url">Agile learning</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T22:13:21+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>Agile Principles<ol>
+<li>Begin with clarity about the outcome, and let it guide every step along the way.</li>
+<li>Listen, iterate, learn and course correct rather than wait until it’s perfect.</li>
+<li>Encourge self-direction for teams to unleash innovation, instead of concentrating leadership in the hands of a select few</li>
+</ol>
+</li>
+<li>尼享旅游</li>
+<li></li>
+</ol>
+<p><a href="https://easy-mock.com/mock/5b7f7a284a96987699e40630/imageUpload" target="_blank" rel="noopener">https://easy-mock.com/mock/5b7f7a284a96987699e40630/imageUpload</a></p>
+<p><a href="https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100,https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100,https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100,https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100" target="_blank" rel="noopener">https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100,https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100,https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100,https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100</a></p>
+<p>action=”<a href="http://www.vport.com/rest/fileUpload/saveFile" target="_blank" rel="noopener">http://www.vport.com/rest/fileUpload/saveFile</a>“</p>
+<p>:http-request=”uploadImage”</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/01/16/微信小程序开发知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/16/微信小程序开发知识点/" itemprop="url">微信小程序开发知识点</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T11:30:05+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>绑定与冒泡</li>
+</ol>
+<ul>
+<li>key 以<code>bind</code>或<code>catch</code>开头，然后跟上事件的类型，如<code>bindtap</code>、<code>catchtouchstart</code>。自基础库版本 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener">1.5.0</a> 起，在非<a href="https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html" target="_blank" rel="noopener">原生组件</a>中，<code>bind</code>和<code>catch</code>后可以紧跟一个冒号，其含义不变，如<code>bind:tap</code>、<code>catch:touchstart</code>。</li>
+<li>value 是一个字符串，需要在对应的 Page 中定义同名的函数。不然当触发事件的时候会报错。</li>
+</ul>
+<p><code>bind</code>事件绑定不会阻止冒泡事件向上冒泡，<code>catch</code>事件绑定可以阻止冒泡事件向上冒泡。</p>
+<ol>
+<li><p>引用</p>
+<ol>
+<li><p>import</p>
+</li>
+<li><ol>
+<li>适合引用template</li>
+<li>而template适合传参</li>
+</ol>
+</li>
+<li><p>include</p>
+</li>
+<li><ol>
+<li>适合引用整个页面，比如app左右边会有一些推荐的新闻列表等等</li>
+<li>但无法进行传参</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>样式</p>
+<ol>
+<li>没有body</li>
+</ol>
+<p>​    不过你可以通过在wxss中对page的设置来影响整个页面的样式，比如下面的代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">page&#123;</span><br><span class="line"></span><br><span class="line">    background:#F8F8F8</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>全局样式 app.wxss 无需人工引用，它会自动加载到每一个视图上去。</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/01/09/Vue知识点小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/09/Vue知识点小记/" itemprop="url">Vue知识点小记</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T11:18:22+08:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>Vue中只要是大写字母都会转换成    <code>-</code>小写</p>
+<p>如fontSize —&gt; font-size</p>
+<ol>
+<li>使用<code>:style</code>时。Vue.js会自动给特殊的css属性名称增加前缀，如<code>transform</code></li>
+</ol>
+</li>
+<li><p><code>v-if</code>和<code>v-show</code>的区别：</p>
+<ul>
+<li><code>v-if</code>实时渲染，页面显示就渲染，不显示就直接从DOM树中移除</li>
+<li><code>v-show</code>永远存在于DOM树中，只是通过切换<code>display</code>来展现与否</li>
+</ul>
+</li>
+<li><p><code>v-if</code>的弊端</p>
+<p>Vue在渲染元素时，出于效率考虑，会尽可能地复用已有的元素而非重新渲染，因此会出现乌龙</p>
+<p>只会渲染变化的元素，也就是说，input元素被复用了</p>
+<p>解决方法：加<code>key</code>唯一标识</p>
+</li>
+<li><p>组件</p>
+<ol>
+<li>必须使用小写字母加’-‘的方式进行命名</li>
+<li><code>template</code>必须被标签包裹</li>
+</ol>
+</li>
+<li><p>子组件向父组件传数据三步走：</p>
+<ol>
+<li>自定义事件</li>
+<li>在子组件中用<code>$emit</code>出发时间，第一个参数是事件名，后边的参数是要传递的数据</li>
+<li>在自定义事件中用一个参数来接受</li>
+</ol>
+</li>
+<li><p>父组件需要拿子组件的内容时，如果用<code>$child</code>则分不清拿到的是哪个子组件。</p>
+<p>可以通过给子组件添加<code>ref=&#39;&#39;</code>这个属性来为子组件添加索引。如</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">child-component</span> <span class="attr">ref</span>=<span class="string">'a'</span>&gt;</span><span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这是在父组件的方法中可以通过</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.msgFromChild = <span class="keyword">this</span>.$refs.c.msg;</span><br></pre></td></tr></table></figure>
+<p>来拿到目标子组件数据</p>
+</li>
+<li><p>自定义指令</p>
+</li>
+<li><p>Vue实现点击动画，并可无限点击</p>
+<p>原理是通过v-bind绑定类名，通过点击事件给元素添加<code>active</code>类名来出发动画。</p>
+<p>动画原理：动画效果为点击刷新icon进行rotate，使用<code>keyframes</code>来呈现旋转效果，简单css代码如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.refresh-button</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">rgb</span>(141, 150, 151);</span><br><span class="line">  <span class="attribute">cursor</span>: pointer;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">26px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.refresh-button</span><span class="selector-class">.active</span>&#123;</span><br><span class="line">  <span class="attribute">animation</span>: rotate <span class="number">0.6s</span>;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> rotate &#123;</span><br><span class="line">  0%&#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(0deg);</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">rgb</span>(141, 150, 151);</span><br><span class="line">  &#125;</span><br><span class="line">  50%&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">rgb</span>(216, 101, 101);</span><br><span class="line">  &#125;</span><br><span class="line">  100%&#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-360deg);</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">rgb</span>(141, 150, 151); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用Vue中的缩写<code>@</code>代替<code>v-on:</code>， <code>:</code>代替<code>v-bind:</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-refresh refresh-button"</span> @<span class="attr">click</span>=<span class="string">"refreshData"</span> <span class="attr">:class</span>=<span class="string">"&#123;active: isActive&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在Vue中写的方法为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">refreshData() &#123;</span><br><span class="line">    <span class="keyword">this</span>.isActive = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// set timeout to reset rotate animation</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.isActive = <span class="literal">false</span></span><br><span class="line">    &#125;, <span class="number">600</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意这里要使用<code>setTimeOut()</code>来重置属性。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/01/02/抽象类和接口/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1091,818 +1803,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/29/Cookie-Session-Cache-Control/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/29/Cookie-Session-Cache-Control/" itemprop="url">Cookie, Session, Cache-Control</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T14:09:52+08:00">
-                2018-10-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><ol>
-<li>服务器通过<code>Set-Cookie</code>头给客户端一串字符串</li>
-<li>客户端每次访问<strong>相同域名</strong>的网站是，必须带上这段字符串</li>
-<li>客户端要在一段时间内保存这个<code>Cookie</code></li>
-<li><code>Cookie</code>默认在用户关闭页面后就失效，后台代码可以任意设置<code>Cookie</code>的过期时间</li>
-</ol>
-</li>
-<li><h4 id="Seesion"><a href="#Seesion" class="headerlink" title="Seesion"></a>Seesion</h4><ol>
-<li>将<code>SeesionID</code>（随机数）通过`Cookie发给客户端</li>
-<li>客户端访问服务器时，服务器读取<code>SessionID</code></li>
-<li>服务器有一块<strong>内存</strong>（哈希表）保存了所有<code>session</code></li>
-<li>通过<code>SessionID</code>我们可以得倒对应用户的隐私信息如<code>id</code>, <code>email</code>等</li>
-<li>这块<strong>内存</strong>（哈希表）就是服务器上的所有<code>session</code></li>
-</ol>
-</li>
-<li><h4 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h4><ol>
-<li><code>LocalStorage</code>跟<code>HTTP</code>无关</li>
-<li><code>HTTP</code>不会带上<code>LocalStorage</code>的值</li>
-<li>只有相同域名的页面才能互相读取<code>LocalStorage</code></li>
-<li>每个域名<code>LocalStorage</code>最大存储量为5Mb（每个浏览器不一样）</li>
-<li>常用场景：记录有没有提示过用户（等不敏感的信息）</li>
-<li><code>LocalStorage</code>永久有效，除非用户清理缓存</li>
-</ol>
-</li>
-<li><h4 id="SessionStorage"><a href="#SessionStorage" class="headerlink" title="SessionStorage"></a>SessionStorage</h4><ol>
-<li>前四点同上</li>
-<li><code>SessionStorage</code>在用户关闭页面后就失效</li>
-</ol>
-</li>
-<li><h4 id="HTTP缓存"><a href="#HTTP缓存" class="headerlink" title="HTTP缓存"></a>HTTP缓存</h4><ol>
-<li><p>设置<code>Cache-Control</code><strong>响应头</strong>来进行web性能优化</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Cache-Control'</span>, <span class="string">'max-age=31650000'</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>可以让你的浏览器在一定时间内不访问服务器，直接访问本地的硬盘，这样速度会极快（因为请求都不会被发出去）。</li>
-<li>知乎设置Cache-Control的<code>max-age</code>为365天</li>
-<li>如果需要更新，可以直接在入口处<code>url</code>稍微变一下，跟以前的所有<code>url</code>都不一样，这样浏览器就会发送请求，去更新网页。</li>
-</ol>
-</li>
-<li><p>设置<code>Expires</code><strong>响应头</strong>来进行web性能优化</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Expires'</span>, <span class="string">'Sun, 04 Feb 2018 18:11:05 GM'</span>)</span><br></pre></td></tr></table></figure>
-<p>这是一种老的做法，和<code>Cache-Control</code>相比，<code>Expires</code>设置的是过期的时间点，<code>Cache-Control</code>设置的是时间段。如果用户的系统时间错乱那么<code>Expires</code>就会有bug。</p>
-</li>
-</ol>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/25/原型与原型链/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/25/原型与原型链/" itemprop="url">原型与原型链</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T16:57:22+08:00">
-                2018-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>创建对象的3种方法</p>
-<ol>
-<li><p>字面量的方式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person1 = &#123;</span><br><span class="line">    name: <span class="string">'Joe'</span>,</span><br><span class="line">    age: <span class="number">17</span>,</span><br><span class="line">    gender: male,</span><br><span class="line">    walk: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"I walk"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="comment">// 实例对象</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用系统的构造函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person2.name = <span class="string">'Rocky'</span>;</span><br><span class="line">person2.age = <span class="number">18</span>;</span><br><span class="line">person2.gender = <span class="string">'male'</span>;</span><br><span class="line">person2.walk = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"I walk"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义构造函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Persion</span>(<span class="params">name, age, gender</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = gender;<span class="string">'</span></span><br><span class="line"><span class="string">    this.walk = function()&#123;</span></span><br><span class="line"><span class="string">        console.log("I walk");</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">// 实例话一个对象，并对属性进行初始化</span></span><br><span class="line"><span class="string">var person3 = new Person("Zoe", 17, "female");</span></span><br></pre></td></tr></table></figure>
-<p>只有第三种方法才可以区分类别，也就是</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person3 <span class="keyword">instanceof</span> Person <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>当我们写如下代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line">n.toString();</span><br></pre></td></tr></table></figure>
-<p>的时候，内存发生了什么？为什么简单变量也具有<code>toString()</code>这种方法了呢？</p>
-<p>首先，第一行代码会在栈内存中创建一个简单类型的变量n；当运行第二行代码的时候，程序在堆内存中创建一个<strong>临时</strong>的Number对象，此对象会调用其内部的<code>toString()</code>方法，调用之后此临时对象就会<strong>自动销毁</strong></p>
-</li>
-<li><p>原型</p>
-<ol>
-<li><p>作用之一：数据共享，节省内存空间</p>
-</li>
-<li><ol>
-<li>实例对象中的<code>__proto__</code>也是对象，叫原型，但不是标准的属性，是供浏览器使用的</li>
-<li>构造函数中也有一个属性叫做<code>prototype</code>，也是对象，叫原型，是标准的属性，供程序员使用</li>
-<li><code>per.__proto__ === Person.prototype //true</code></li>
-</ol>
-</li>
-<li><p>作用之二：实现继承</p>
-</li>
-<li><p>构造函数、实例对象、原型对象三者的关系：</p>
-<ul>
-<li><p>构造函数可以实例化对象</p>
-</li>
-<li><p>构造函数中有一个属性叫prototype，是构造函数的原型对象</p>
-</li>
-<li>构造函数的原型对象(prototype)中有一个constructor构造器，这个构造器指向的就是自己所在的原型对象所在的构造函数</li>
-<li>实例对象的原型对象(<code>__proto__</code>)指向的是该构造函数的原型对象</li>
-<li>构造函数的原型对象(<code>prototype</code>)中的方法是可以被实例对象直接访问的</li>
-</ul>
-</li>
-<li><p>不需要共享的数据写在构造函数中，需要共享的数据写在原型中</p>
-</li>
-<li><p>原型的简单写法(必须手动修改构造器的指向)</p>
-</li>
-<li><p>原型中的方法，是可以相互调用的</p>
-</li>
-<li><p>属性和方法的层层搜索(为<code>原型链</code>做铺垫)：实例对象中如果没有这个属性或者这个方法，才会去原型对象中找，但如果有，则直接用</p>
-</li>
-</ol>
-</li>
-<li><p>原型链：是一种实例对象和原型对象之间的关系，关系是通过原型(<code>__proto__</code>)来联系的</p>
-<ul>
-<li>实例对象的原型<code>__proto__</code>指向的是该对象所在的构造函数的原型对象</li>
-<li>只要是对象，那么就有<code>__proto__</code>，而这个<code>__proto__</code>一定指向的是某个构造函数的原型(<code>prototype</code>)</li>
-<li>而对象的构造函数的原型对象也有一个<code>__proto__</code>，指向为<code>Object</code>的原型(<code>prototype</code>)，而<code>Object</code>的原型对象的<code>__proto__</code>是<code>null</code></li>
-<li>构造函数的原型对象(<code>prototype</code>)指向如果改变了，实例丢向的原型(<code>__proto__</code>)指向也会发生改变</li>
-<li>原型的指向是可以改变的 </li>
-<li>实例对象和原型对象之间的关系是通过<code>__proto__</code>原型来联系起来的，这个关系就是原型链</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/23/在前端引入MVC思想以及会遇到的问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/在前端引入MVC思想以及会遇到的问题/" itemprop="url">在前端引入MVC思想以及会遇到的问题</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T23:43:52+08:00">
-                2018-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>MVC是Modal, View and Controller的缩写，在前端引入MVC思想可以更有助于我们对于前端框架的学习。</p>
-<p>不似springMVC，我们现在可以简单的把前端不同功能的<code>function</code>分为不同的<code>Modal</code>。而每一部分<code>Modal</code>对应的视图部分我们可以称之为<code>View</code>，在每个<code>Modal</code>里，控制对应<code>View</code>的部分称之为<code>Controller</code>。</p>
-<p>MVC是一种代码分层思想，Model 和服务器交互，Model 将得到的数据交给 Controller，Controller 把数据填入 View，并监听 View<br>用户操作 View，如点击按钮，Controller 就会接受到点击事件，Controller 这时会去调用 Model，Model 会与服务器交互，得到数据后返回给 Controller，Controller 得到数据就去更新 View</p>
-<p>Model负责数据层, 主要负责前后端的数据交互</p>
-<p>VIew负责视图, 就是将页面呈现给用户</p>
-<p>Controller负责具体的业务逻辑实现, 就是除了视图显示和前后端数据交互之外的所有东西</p>
-<p>MVC的好处：职责分明，模块清晰，代码简单。</p>
-<p>在引入<code>MVC</code>思想之后，发现我们并不想要全局变量而想使用局部变量，可在ES 5中，只有函数才具有局部变量，于是我们声明一个function并且立即执行，如</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;.call();</span><br></pre></td></tr></table></figure>
-<p>但是这种写法在Chrome中会报错说语法错误，所以我们需要使用下述写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;.call(); <span class="comment">// 我们不在乎这个匿名函数的返回值，所以加个!取反没关系</span></span><br></pre></td></tr></table></figure>
-<p>下面举个例子:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'Catherine'</span>,</span><br><span class="line">        age: <span class="number">17</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
-<p>在上面的例子中，立即执行函数使得<code>person</code>无法被外部访问，但若我们一定要操作<code>person</code>应该怎么办呢？我们可以使用<code>闭包</code>：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> persion = &#123;</span><br><span class="line">        name: <span class="string">'Catherine'</span>,</span><br><span class="line">        age: <span class="number">17</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.ageGrowUp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        person.age += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> person.age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;.call();</span><br></pre></td></tr></table></figure>
-<p>所以<code>window.ageGrowUp</code>保存了匿名函数的地址，任何地方都可以使用<code>window.ageGrowUp</code>来操作<code>person.age</code>，但是不能直接访问<code>person</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/22/同源策略与CORS跨域/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/22/同源策略与CORS跨域/" itemprop="url">同源策略与CORS跨域 & AJAX</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T01:13:26+08:00">
-                2018-10-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Question: 为什么form等请求可以跨域，而AJAX请求无法跨域？</p>
-<blockquote>
-<p>因为原页面用form提交到另一个域名之后，原页面的脚本无法获取新页面中的内容。</p>
-<p>所以浏览器认为这是安全的。</p>
-<p>而AJAX是可以<strong>读取相应内容的</strong>， 因此浏览器不能允许你这样做。</p>
-<p>如果你细心的话会发现，其实请求已经发送出去了，你只是拿不到响应而已。</p>
-<p>所以浏览器这个策略的本质是，一个域名的JS，在未经允许的情况下，不得读取另一个域名的内容。但浏览器并不阻止逆向另一个域名发送请求。</p>
-</blockquote>
-<h4 id="1-同源策略"><a href="#1-同源策略" class="headerlink" title="1. 同源策略"></a>1. 同源策略</h4><p><a href="https://earthsplitter.github.io/2017/03/21/%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96%E4%B8%8E%E8%B7%A8%E5%9F%9F%E8%AF%A6%E8%A7%A3/" target="_blank" rel="noopener">https://earthsplitter.github.io/2017/03/21/%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96%E4%B8%8E%E8%B7%A8%E5%9F%9F%E8%AF%A6%E8%A7%A3/</a></p>
-<ul>
-<li><p>协议相同(FTP, HTTP)</p>
-</li>
-<li><p>域名相同</p>
-</li>
-<li><p>端口相同</p>
-<p>目的: 为了保护用户隐私，防止身份伪造等 </p>
-</li>
-</ul>
-<h4 id="2-JSONP"><a href="#2-JSONP" class="headerlink" title="2. JSONP"></a>2. JSONP</h4><ul>
-<li><p>优点：兼容性好 </p>
-</li>
-<li><p>缺点：仅支持GET方法具有局限性 </p>
-</li>
-<li>其设计思路是浏览器对<script>标签不做限制，因此可以利用这一点进行跨域请求 </li>
-<li>很简单，就是利用<script>标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。当需要通讯时，本站脚本创建一个<script>元素，地址指向第三方的API网址，形如：<script src="<http://www.example.net/api?param1=1¶m2=2>"></script> 并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：callback({“name”:”hax”,”gender”:”Male”})。这样浏览器会调用callback函数，并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。补充：“历史遗迹”的意思就是，如果在今天重新设计的话，也许就不会允许这样简单的跨域了嘿，比如可能像XHR一样按照CORS规范要求服务器发送特定的http头。 </li>
-</ul>
-<h4 id="3-CORShttps-www-jianshu-com-p-94946ca90194"><a href="#3-CORShttps-www-jianshu-com-p-94946ca90194" class="headerlink" title="3. CORShttps://www.jianshu.com/p/94946ca90194"></a>3. CORS<a href="https://www.jianshu.com/p/94946ca90194" target="_blank" rel="noopener">https://www.jianshu.com/p/94946ca90194</a></h4><ul>
-<li><p>优点：功能更强大支持HTTP各种method </p>
-</li>
-<li><p>缺点：兼容性不如JSONP，要求IE&gt;10 </p>
-</li>
-<li>服务端：若确定接受请求，则在返回结果中加入响应头：Access-Control-Allow-Origin，值为请求方的域名</li>
-<li>CORS的核心就一句话，在服务器端设置响应头</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'frontendSite'</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="4-原生AJAX的几个方法"><a href="#4-原生AJAX的几个方法" class="headerlink" title="4. 原生AJAX的几个方法"></a>4. 原生AJAX的几个方法</h4><ol>
-<li><p>简单的4步走</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();  <span class="comment">// step 1</span></span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'/xxx'</span>);		 <span class="comment">// step 2</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="comment">// step 3</span></span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'success'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send();						 <span class="comment">// step 4</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS 可以设置任意请求header吗？</p>
-<p>第一部分通过 <code>xhr.open(&#39;GET&#39;, &#39;/xxx&#39;)</code> 设置</p>
-<p>第二部分通过 <code>xhr.setHeader(&#39;content-type&#39;, &#39;x-www-form-urlencoded&#39;)</code> 设置</p>
-<p>第四部分通过 <code>xhr.send(&#39;a=1&amp;b=2&#39;)</code> 设置</p>
-</li>
-<li><p>JS 可以获取任意响应header吗？</p>
-<p>第一部分通过 <code>xhr.status</code> / <code>xhr.statusText</code> 获取</p>
-<p>第二部分通过 <code>xhr.getResponseHeader()</code>/<code>xhr.getAllResponseHeaders()</code> 获取</p>
-<p>第四部分通过 <code>xhr.responseText</code> 获取</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/21/JSONP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/21/JSONP/" itemprop="url">JSONP</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T23:01:51+08:00">
-                2018-10-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>JSONP不是什么高大上的东西，简单地来说：</p>
-<p>请求方：frontend.com (浏览器)</p>
-<p>响应房：backend.com (服务器)</p>
-<ol>
-<li><p>请求方创建动态<code>script</code>，其中标签的<code>src</code>指向响应方，假设请求方的回调函数名称是<code>renderPayment</code>，我们就需要同时传一个查询参数<code>callbackName=renderPayment</code>给响应方</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"click"</span>&gt;</span>click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">click.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">    <span class="keyword">let</span> functionName = <span class="string">'f'</span> + <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">100000</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">window</span>[functionName] = <span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`the result from back end is <span class="subst">$&#123;result&#125;</span>!`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = <span class="string">`127.0.0.1:8001/pay?callbackName=<span class="subst">$&#123;functionName&#125;</span>`</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// delete script tag when finish the request</span></span><br><span class="line">    script.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">        e.currentTarget.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>当然我们可以使用jQuery用更简洁的代码实现：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'127.0.0.1:8001/pay'</span>,</span><br><span class="line">    dataType: <span class="string">'jsonp'</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`the result from back end is <span class="subst">$&#123;response&#125;</span>!`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>响应方根据查询参数<code>callbackName</code>，构造类似</p>
-<ul>
-<li><code>renderPayment.call(undefined, &#39;请求方要的数据&#39;)</code></li>
-<li><code>renderPayment(&#39;请求方要的数据&#39;)</code></li>
-</ul>
-<p>这样的响应</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (path === <span class="string">'/pay'</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> amount = fs.readFileSync(<span class="string">'./db'</span>, <span class="string">'utf8'</span>)</span><br><span class="line">    amount -= <span class="number">1</span></span><br><span class="line">    fs.writeFileSync(<span class="string">'./db'</span>, amount)</span><br><span class="line">    <span class="keyword">let</span> callbackName = query.callback</span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/javascript'</span>)</span><br><span class="line">    response.write(<span class="string">`</span></span><br><span class="line"><span class="string">        <span class="subst">$&#123;callbackName&#125;</span>.call(undefined, 'success')</span></span><br><span class="line"><span class="string">    `</span>)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>浏览器接收到响应后，就会执行<code>renderPayment.call(undefined, &#39;请求方要的数据&#39;)</code></p>
-</li>
-<li><p>那么请求方就获得了想要的数据并且完成处理</p>
-</li>
-</ol>
-<p><strong>这就是JSONP</strong></p>
-<p>下面是一些约定成俗的东西：</p>
-<ol>
-<li>GET请求中的查询参数通常为<code>callback</code></li>
-<li>回调函数名通常为<code>非数字+随机数</code>，如<code>j48174940</code></li>
-</ol>
-<p>最后记录一道面试题：为什么JSONP不支持POST请求？</p>
-<p>Answer：</p>
-<ol>
-<li>因为<code>JSONP</code>是通过动态创建<code>script标签</code>实现的</li>
-<li>动态创建<code>script</code>的时候只能用<code>GET</code>，无法使用<code>POST</code></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1948,7 +1853,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1961,7 +1866,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

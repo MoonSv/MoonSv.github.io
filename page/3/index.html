@@ -252,6 +252,839 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/10/04/DOM-API-event-，虚拟DOM深入理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/04/DOM-API-event-，虚拟DOM深入理解/" itemprop="url">DOM(API, event)，虚拟DOM深入理解</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T14:06:26+08:00">
+                2018-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-DOM简介"><a href="#1-DOM简介" class="headerlink" title="1. DOM简介"></a>1. DOM简介</h3><p>Document Object Model: 把文档和对象对应起来的模型叫DOM</p>
+<ul>
+<li><code>meta</code>, <code>title</code>, <code>script</code>, 等等都是<strong>Element</strong>对象， <code>html</code>属于<strong>Document</strong>对象</li>
+<li><code>h1</code>, <code>h2</code>, <code>p</code>等中的文本属于<strong>Text</strong>对象。</li>
+<li>注释属于<strong>Comment</strong>对象</li>
+<li>这3种对象有一个共同的祖先：<strong>Node</strong></li>
+<li>DOM的最小组成单位叫做<strong>Node</strong></li>
+<li>DOM树的根节点是<code>HTML</code></li>
+</ul>
+<h3 id="2-碎知识整理"><a href="#2-碎知识整理" class="headerlink" title="2. 碎知识整理"></a>2. 碎知识整理</h3><ol>
+<li>Node的接口（属性和方法）</li>
+</ol>
+<ul>
+<li>innerText和textContent区别：前者是由IE浏览器引入的，后者是之后由Firefox和Opera引入的. <strong><code>textContent</code></strong>会获取所有元素的内容，包括<font color="darkgreen"> script标签和style标签里的文字内容 </font></li>
+<li><code>removeChild()</code>只是将元素从页面中移除，但内存中还存在</li>
+<li>nextSibling可能会获取到文本，因为在html中，标签之间的<font color="darkgreen">回车</font>属于文本</li>
+<li>nodeType需要背，<font color="darkgreen">1表示节点，3表示文本</font></li>
+<li>cloneNode()可以传参数<code>true</code>来表示是否为深度克隆，深度克隆会将所有的子元素都克隆下来</li>
+<li><code>parent.childNodes</code> 是<strong>动态集合</strong>。所谓动态集合就是一个活的集合，DOM树删除或新增一个相关节点，都会立刻反映在NodeList接口之中。</li>
+<li><code>document.querySelectorAll</code>方法返回的是一个<strong>静态集合</strong>。DOM内部的变化，并不会实时反映在该方法的返回结果之中。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/30/JS动画与缓动/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/30/JS动画与缓动/" itemprop="url">JS动画与缓动</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-30T22:44:36+08:00">
+                2018-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/30/JS回顾系列（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/30/JS回顾系列（二）/" itemprop="url">JS回顾系列（二）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-30T16:39:44+08:00">
+                2018-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="常用api："><a href="#常用api：" class="headerlink" title="常用api："></a>常用api：</h4><ol>
+<li><p><code>node.nodeType</code>，<code>1</code>表示节点，<code>3</code>表示文本。使用情景：因为nextSibling有bug（有些浏览器内核认为两个tag之间存在回车，所以nextSibling可能会取到回车） </p>
+<ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bro  = target.nextSibling;</span><br><span class="line"><span class="keyword">while</span>(bro.nodeType === <span class="number">3</span>)&#123;</span><br><span class="line">    bro = bro.nextSibling;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><code>node.tagName</code>返回的值是大写字母，如<code>&lt;ul&gt;&lt;/ul&gt;</code>的tagName为<code>&#39;UL&#39;</code></p>
+</li>
+<li><p><code>document.querySelectorAll(&#39;#div ul li&#39;);</code></p>
+</li>
+<li><p><code>node.parentNode.children</code></p>
+</li>
+</ol>
+<h4 id="JS动画与缓动"><a href="#JS动画与缓动" class="headerlink" title="JS动画与缓动"></a>JS动画与缓动</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">div.style.position = <span class="string">"relative"</span>;</span><br><span class="line">div.style.left = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> id = setInterval(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    n = n + <span class="number">1</span>;</span><br><span class="line">    div.style.left = n + <span class="string">'px'</span>;</span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="built_in">window</span>.clearInterval(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实用插件：<a href="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js" target="_blank" rel="noopener">tween.js</a></li>
+</ul>
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><ol>
+<li><p><code>let a = [&#39;a&#39;,&#39;b&#39;]</code>等价于<code>let a = new Array(&#39;a&#39;,&#39;b&#39;)</code></p>
+</li>
+<li><h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h4><p><code>forEach(function(x, y))</code>，<code>forEach()</code>接受的是<strong>函数</strong>，函数必须接受两个参数，前者是<code>value</code>，后者是<code>index</code></p>
+</li>
+<li><h4 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h4><p><code>array.sort()</code>默认为正序排序，<code>sort</code>可以接受一个函数作为参数来改变排序顺序。如：</p>
+<ul>
+<li><p><code>array.sort((x, y) =&gt; x-y)</code>正序</p>
+</li>
+<li><p><code>array.sort((x, y) =&gt; y-x)</code>倒序</p>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同理可以根据hash的value来排序 </span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'palm'</span>];</span><br><span class="line"><span class="keyword">let</span> hash = &#123;<span class="string">'apple'</span>: <span class="number">10</span>, <span class="string">'banana'</span>: <span class="number">5</span>, <span class="string">'palm'</span>: <span class="number">20</span>&#125;;</span><br><span class="line">array.sort( <span class="function">(<span class="params">x, y</span>) =&gt;</span> hash[x] - hash[y] ); <span class="comment">// ['banana', 'apple', 'palm']</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h4><ul>
+<li><p>和Python的join用法一样，用于数据转换成字符串</p>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> str = a.join(<span class="string">'+'</span>) <span class="comment">// "1+2+3"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h4><ul>
+<li><p>用于连接合并两个数组。在JavaScript中，数组a + 数组b的结果是两个数组.toString()后进行字符串的合并，并不可以用于合并两个数组。所以需要<code>concat()</code>方法。</p>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line">a.concat(b) <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>也用于复制一个数组（深度拷贝）</strong></p>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> b = a.concat([]);</span><br><span class="line">b === a <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h4><ul>
+<li><p><code>map</code>和<code>forEach</code>几乎是一模一样的，唯一不同的地方在于<code>forEach</code>运行完之后不会返回任何值，而<code>map</code>会将运行结果重新生成一个新数组进行返回。</p>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">a.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">a.map(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// [2,4,6]</span></span><br><span class="line"><span class="comment">// 用ES6可以更美观地写成</span></span><br><span class="line">a.map(<span class="function"><span class="params">value</span> =&gt;</span> value * <span class="number">2</span>)</span><br><span class="line"><span class="comment">// [2,4,6]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 得到所有偶数的平方</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line">a.filter(<span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;).map(<span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算所有奇数的和</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line">a.reduce(<span class="function">(<span class="params">sum, n</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(n % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">        sum += n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>伪数组，通俗地讲就是长的像数组的对象。<code>伪数组.__proto !== Array.prototype</code></p>
+</li>
+</ol>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ol>
+<li><p>现在大家基本上都用<code>foo(1,2)</code>这种方式来调用函数，但JS真正调用函数的硬核方法为<code>foo.call(undefined, 1, 2)</code></p>
+<ul>
+<li><p>call的第一个参数可以用<code>this</code>得到</p>
+</li>
+<li><p>call除第一个参数后面的所有参数可以用<code>arguments</code>得到</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">f.call(<span class="literal">undefined</span>); <span class="comment">// window</span></span><br><span class="line">f.call(<span class="number">1</span>); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>闭包：如果一个函数使用了其作用域之外的变量，那么（变量+函数）就被称作闭包</p>
+</li>
+<li><p>做题时一定要考虑到变量提升，例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">f1.call(<span class="literal">undefined</span>) <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 上述代码根据变量提升可以看成：</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 所以可知console.log里a的值只是声明了还未被定义，即undefined</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/29/JS简单类型和对象的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/29/JS简单类型和对象的区别/" itemprop="url">JS简单类型和对象的区别</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T22:44:58+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>简单类型与对象的主要区别就是简单类型是存储在栈内存当中的，而对象是存储在堆内存当中的。</p>
+<ol>
+<li><p><code>var a = 1</code>和<code>var a = new Number(1)</code>的区别：</p>
+<p>前者是简单类型，后者是对象。后者具有一些内在API如<code>toExponential()</code>, <code>valueOf()</code>, <code>toString()</code>等</p>
+<p>但其实前者也可以直接使用这些API，是什么原因呢？</p>
+<blockquote>
+<p>JS之父在开发语言中，会在简单类型欲调用API时，先创建一个临时对象，比如对于number类型就会创建一个<code>var tmp = new Number(a)</code>，当调用API时，实际是临时对象在调用。</p>
+</blockquote>
+</li>
+<li><p>String的常用API介绍</p>
+<ol>
+<li><code>trim()</code>:  去掉头尾空格</li>
+<li>slice(0, 2): 切片</li>
+<li>includes(‘a’): 是否有某个字符</li>
+<li>chartAt(2): index为2的地方是哪个字符</li>
+<li>IndexOf(‘a’): 查看某个字符的index</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/29/JS回顾系列（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/29/JS回顾系列（一）/" itemprop="url">JS回顾系列（一）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T14:49:57+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="JavaScript数据类型"><a href="#JavaScript数据类型" class="headerlink" title="JavaScript数据类型"></a>JavaScript数据类型</h3><ol>
+<li><h5 id="JS中7中数据类型"><a href="#JS中7中数据类型" class="headerlink" title="JS中7中数据类型"></a>JS中7中数据类型</h5><ul>
+<li><code>Number</code>, <code>null</code>, <code>undefined</code>,  <code>String</code>, <code>Symbol</code>, <code>Boolean</code>,<code>Object</code></li>
+<li>其中，除<code>Object</code>外的前6种数据类型被称为<strong>基本类型</strong>或<strong>简单类型</strong></li>
+</ul>
+</li>
+<li><h5 id="Number"><a href="#Number" class="headerlink" title="Number"></a><code>Number</code></h5><ul>
+<li><code>Number</code>中需要记忆的点是<ul>
+<li>二进制都是以0b开头，如0b11为3（十进制），</li>
+<li>八进制以0开头，如<code>011</code>为9（十进制）。这是一个需要注意的点，例如电话号码<code>0105176531</code>就不能存成Number形式，否则会被认为是八进制，应该存成String类型。</li>
+<li>十六进制以0x开头，如<code>0x11</code>为17（十进制）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a><code>null</code>和<code>undefined</code></h5><ul>
+<li>如果变量没有值，那么就是<code>undefined</code>。</li>
+<li>惯例：<ul>
+<li>如果有一个对象，但现在不想给值，那么就给一个<code>null</code>。</li>
+<li>如果有一个非对象(number, string等)，但现在不想给值，那么就给一个<code>undefined</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="Object"><a href="#Object" class="headerlink" title="Object"></a><code>Object</code></h5><ul>
+<li>对象中的key的格式为字符串，但在定义时可以加引号也可以不加，但如果不加引号则必须满足标识符规范。</li>
+<li>取key时可以写成<code>person[&#39;name&#39;]</code>，当引号内的值满足标识符规范的情况下，可以写成<code>person.name</code></li>
+<li><strong><code>in</code></strong>， 可以用<code>in</code>来判断该对象是否有某属性，如<code>&#39;name&#39; in person</code>返回true存在，false不存在。</li>
+<li><strong>删掉</strong><code>object</code>中某属性：<code>delete person[&#39;name&#39;]</code></li>
+<li><strong><code>for...in</code></strong>，遍历<code>object</code></li>
+<li><code>typeof</code>查看变量属于什么类型</li>
+</ul>
+</li>
+</ol>
+<h3 id="JavaScript里的数据类型转换"><a href="#JavaScript里的数据类型转换" class="headerlink" title="JavaScript里的数据类型转换"></a>JavaScript里的数据类型转换</h3><ol>
+<li><h5 id="其他类型转为string"><a href="#其他类型转为string" class="headerlink" title="其他类型转为string"></a>其他类型转为string</h5><ul>
+<li>可以采用<code>xx.tostring()</code>方法，但对null支持不加</li>
+<li>全局函数<code>String(xx)</code></li>
+<li><strong>更流行</strong>的方法是<code>xx + &#39;&#39;</code></li>
+</ul>
+</li>
+<li><h5 id="转为boolean"><a href="#转为boolean" class="headerlink" title="转为boolean"></a>转为boolean</h5><ul>
+<li>全局方法<code>Boolean(xx)</code>。这里<strong>需要记住的一点</strong>是：<ul>
+<li><code>Boolean(&#39;&#39;)</code>的值为<code>false</code>而<code>Boolean({})</code>的值为<code>true</code></li>
+</ul>
+</li>
+<li><strong>要记住5个falsy值</strong>（falsy是在Boolean上下文中认定可转换为false的值）<ul>
+<li>number里的<code>0</code>和<code>NaN</code></li>
+<li>string里的<code>&#39;&#39;</code></li>
+<li><code>null</code></li>
+<li><code>undefined</code></li>
+</ul>
+</li>
+<li>所有的对象都是<code>true</code></li>
+</ul>
+</li>
+<li><h5 id="转为number"><a href="#转为number" class="headerlink" title="转为number"></a>转为number</h5><ul>
+<li>全局方法<code>Number(&#39;1&#39;)</code></li>
+<li><code>parseInt(&#39;1&#39;, 10)</code>，<code>parseInt(&#39;123silence&#39;, 10)</code>这里会解析到123</li>
+<li><code>parseFloat(&#39;1.23&#39;)</code></li>
+<li><code>&#39;1&#39; - 0</code>这种方法被程序员广泛使用</li>
+<li><code>+ &#39;1&#39;</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="JavaScript-内存"><a href="#JavaScript-内存" class="headerlink" title="JavaScript 内存"></a>JavaScript 内存</h3><ul>
+<li><p>在JavaScript中，有内存被分为stack（栈内存）和heap（堆内存）。</p>
+</li>
+<li><p>所有简单数据类型（6个）都会被存在栈内存。</p>
+</li>
+<li><p>而复杂类型会在栈内存中存一个地址，地址指向堆内存的某个区域，这个区域存放着实际的数据。</p>
+</li>
+</ul>
+<p><strong>3个内存题目：</strong></p>
+<ol>
+<li><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span> : <span class="string">'Jack'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = &#123;<span class="attr">name</span>: <span class="string">'Lorry'</span>&#125;;</span><br><span class="line">a[<span class="string">'name'</span>] = ?    <span class="comment">// Jack</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'Jack'</span>&#125;；</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b.name = <span class="string">'Lorry'</span>;</span><br><span class="line">a[<span class="string">'name'</span>] = ?    <span class="comment">// Lorry</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'Jack'</span>&#125;；</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = <span class="literal">null</span>;</span><br><span class="line">a = ?    <span class="comment">// &#123;name: 'Jack'&#125;;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>这里的考点是在第3行的<code>a.x</code>其实还是原来的a，后面a又有了新地址，所以x是给了原来的老地址，而b一直指向的是老地址</p>
+<ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>: <span class="number">1</span>&#125;；</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>: <span class="number">2</span>&#125;</span><br><span class="line">a.x = ?    <span class="comment">// undefined </span></span><br><span class="line">b.x = ?    <span class="comment">// [object Object]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><h6 id="什么是垃圾？"><a href="#什么是垃圾？" class="headerlink" title="什么是垃圾？"></a>什么是垃圾？</h6><ul>
+<li>如果一个对象没有被引用，那么它就是垃圾</li>
+</ul>
+<h6 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">document</span>.body.onclick = fn;</span><br><span class="line">fn = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// function()&#123;&#125;是不是垃圾？</span></span><br><span class="line"><span class="comment">// 答案是否定的，通过想象内存图可得知function()依然被document.body.onclick所引用着</span></span><br></pre></td></tr></table></figure>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ol>
+<li><h4 id="数组的本质"><a href="#数组的本质" class="headerlink" title="数组的本质"></a>数组的本质</h4><p>本质上，数组属于一种特殊的对象。<code>typeof</code>运算符会返回数组的类型是<code>object</code>。</p>
+</li>
+<li><p>length属性</p>
+<ul>
+<li><p>数组的<code>length</code>属性，返回数组的成员数量。</p>
+</li>
+<li><p><code>length</code>属性是可写的。如果人为设置一个小于当前成员个数的值，该数组的成员会自动减少到<code>length</code>设置的值。</p>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line">arr.length <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line">arr.length = <span class="number">2</span>;</span><br><span class="line">arr <span class="comment">// ['a', 'b']</span></span><br></pre></td></tr></table></figure>
+<p>上面代码表示，当数组的<code>length</code>属性设为2（即最大的整数键只能是1）那么整数键2（值为<code>c</code>）就已经不在数组中了，被自动删除了。</p>
+<p>清空数组的一个有效方法，就是将<code>length</code>属性设为0。</p>
+</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/09/18/Node-js写脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1088,275 +1921,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/02/01/初识Numpy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/01/初识Numpy/" itemprop="url">初识Numpy</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T11:22:12+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Numpy初识"><a href="#Numpy初识" class="headerlink" title="Numpy初识"></a>Numpy初识</h1><ol>
-<li><p>初级代码</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.zeros((<span class="number">2</span>,<span class="number">3</span>)) <span class="comment">#zeros里必须是元组，默认格式为float, （2,3）是指生成2行3列的矩阵</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    array([[ 0.,  0.,  0.],</span></span><br><span class="line"><span class="string">        [ 0.,  0.,  0.]])</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">np.zeros((<span class="number">2</span>,<span class="number">3</span>), dtype = np.int32) <span class="comment">#将格式改为int</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    array([[0, 0, 0],</span></span><br><span class="line"><span class="string">        [0, 0, 0]], dtype=int32)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">np.random.random((<span class="number">2</span>,<span class="number">3</span>)) <span class="comment">#生成2行3列的随机矩阵(随机数0-1)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    array([[ 0.12901254,  0.40726237,  0.0391579 ],</span></span><br><span class="line"><span class="string">        [ 0.69569515,  0.06916377,  0.26499276]])</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">np.linspace(<span class="number">1</span>, <span class="number">100</span>, <span class="number">100</span>) <span class="comment">#生成从1到100的100个数（平均分布）</span></span><br><span class="line"></span><br><span class="line">np.arange(<span class="number">15</span>) <span class="comment">#生成从0-14的单行矩阵</span></span><br><span class="line">np.arange(<span class="number">15</span>).reshape(<span class="number">2</span>,<span class="number">3</span>) <span class="comment">#将矩阵改为2行3列</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一个易忽略的易错点</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = arange(<span class="number">12</span>)</span><br><span class="line">b = a</span><br><span class="line">b.shape = <span class="number">3</span>,<span class="number">4</span></span><br><span class="line"><span class="comment"># 这时a的shape也会被改变成(3,4)，这时因为a和b都指向了同一个值，只是那个值的两个不同的名字而已</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 浅复制功能 view()   不推荐使用</span></span><br><span class="line">c = a.view()</span><br><span class="line">c[<span class="number">0</span>,<span class="number">4</span>] = <span class="number">1234</span> <span class="comment"># 这一步也会改变a[0,4]的值</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 推荐使用 copy()</span></span><br><span class="line">d = a.copy()</span><br><span class="line">d[<span class="number">0</span>,<span class="number">0</span>] = <span class="number">9999</span> <span class="comment"># 这一步不会改变a[0,0]的值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>找矩阵每列最大值</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = np.sin(np.arange(<span class="number">15</span>).reshape(<span class="number">3</span>,<span class="number">5</span>))</span><br><span class="line">index = np.argmax(axis = <span class="number">0</span>)</span><br><span class="line">data_max = data[index, range(data.shape[<span class="number">1</span>])]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<pre><code>`    np.argmax(axis = 0)表示取出每一列最大值的index
-在最后一行代码中，index是一个包含每一列最大值的index的list；data.shape是(3,5)，所以data.shape[1]值为5也就是表示该矩阵一共有五列，所以用range函数可以和index一一对应取该列的最大值`
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2017/12/14/Markdown学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/14/Markdown学习/" itemprop="url">Markdown学习</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T17:12:35+08:00">
-                2017-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Numpy初识"><a href="#Numpy初识" class="headerlink" title="Numpy初识"></a>Numpy初识</h1><ol>
-<li><p>初级代码</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.zeros((<span class="number">2</span>,<span class="number">3</span>)) <span class="comment">#zeros里必须是元组，默认格式为float, （2,3）是指生成2行3列的矩阵</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    array([[ 0.,  0.,  0.],</span></span><br><span class="line"><span class="string">        [ 0.,  0.,  0.]])</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">np.zeros((<span class="number">2</span>,<span class="number">3</span>), dtype = np.int32) <span class="comment">#将格式改为int</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    array([[0, 0, 0],</span></span><br><span class="line"><span class="string">        [0, 0, 0]], dtype=int32)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">np.random.random((<span class="number">2</span>,<span class="number">3</span>)) <span class="comment">#生成2行3列的随机矩阵(随机数0-1)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    array([[ 0.12901254,  0.40726237,  0.0391579 ],</span></span><br><span class="line"><span class="string">        [ 0.69569515,  0.06916377,  0.26499276]])</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">np.linspace(<span class="number">1</span>, <span class="number">100</span>, <span class="number">100</span>) <span class="comment">#生成从1到100的100个数（平均分布）</span></span><br><span class="line"></span><br><span class="line">np.arange(<span class="number">15</span>) <span class="comment">#生成从0-14的单行矩阵</span></span><br><span class="line">np.arange(<span class="number">15</span>).reshape(<span class="number">2</span>,<span class="number">3</span>) <span class="comment">#将矩阵改为2行3列</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一个易忽略的易错点</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = arange(<span class="number">12</span>)</span><br><span class="line">b = a</span><br><span class="line">b.shape = <span class="number">3</span>,<span class="number">4</span></span><br><span class="line"><span class="comment"># 这时a的shape也会被改变成(3,4)，这时因为a和b都指向了同一个值，只是那个值的两个不同的名字而已</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 浅复制功能 view()   不推荐使用</span></span><br><span class="line">c = a.view()</span><br><span class="line">c[<span class="number">0</span>,<span class="number">4</span>] = <span class="number">1234</span> <span class="comment"># 这一步也会改变a[0,4]的值</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 推荐使用 copy()</span></span><br><span class="line">d = a.copy()</span><br><span class="line">d[<span class="number">0</span>,<span class="number">0</span>] = <span class="number">9999</span> <span class="comment"># 这一步不会改变a[0,0]的值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>找矩阵每列最大值</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = np.sin(np.arange(<span class="number">15</span>).reshape(<span class="number">3</span>,<span class="number">5</span>))</span><br><span class="line">index = np.argmax(axis = <span class="number">0</span>)</span><br><span class="line">data_max = data[index, range(data.shape[<span class="number">1</span>])]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<pre><code>np.argmax(axis = 0)表示取出每一列最大值的index
-在最后一行代码中，index是一个包含每一列最大值的index的list；data.shape是(3,5)，所以data.shape[1]值为5也就是表示该矩阵一共有五列，所以用range函数可以和index一一对应取该列的最大值
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1402,7 +1971,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1415,7 +1984,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
