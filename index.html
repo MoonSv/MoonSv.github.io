@@ -252,6 +252,670 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/06/11/Java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/11/Java/" itemprop="url">Java</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T15:39:00+08:00">
+                2019-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>数据类型</p>
+<ol>
+<li><p>原生数据类型和引用数据类型(对象)</p>
+<ul>
+<li>原生数据类型永远是数据本身</li>
+<li>引用数据类型则储存地址</li>
+</ul>
+</li>
+<li><p>Java int的最大值是<strong>21亿</strong>，为什么要记住这个数字？因为像类似淘宝这类互联网企业的成交量很容易就会超过这个值</p>
+<p>Java的每个类型都有最大值和最小值，如果超出了这个值就会溢出，溢出是没有任何征兆和异常的</p>
+</li>
+<li><p>浮点数是一个近似的表示，是不精确的。所以在Java中判断浮点数是否和某数值相等是不安全的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> d = <span class="number">1.0</span></span><br><span class="line"><span class="comment">// 这样是不安全的</span></span><br><span class="line"><span class="keyword">if</span> (d == <span class="number">1.0</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 这样是安全的</span></span><br><span class="line"><span class="keyword">if</span> (Math.abs(d - <span class="number">1.0</span>) &lt; <span class="number">0.000001</span>)&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>另外一个坑，整数除法是地板除</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a / b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">psvm()&#123;</span><br><span class="line">  sout(divide(<span class="number">3</span>, <span class="number">2</span>)) <span class="comment">// Oops, result = 1.0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以修改成</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1.0</span> * a / b; <span class="comment">// 这里会发生变量提升，提升到精度更高的级别</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/06/02/IDEA生产力翻倍的快捷键/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/02/IDEA生产力翻倍的快捷键/" itemprop="url">IDEA生产力翻倍的快捷键</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T17:19:40+08:00">
+                2019-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>万用键<code>ALt + Enter</code></li>
+<li>Search everywhere: 双击<code>shift</code></li>
+<li>查看定义：相当于 Ctrl + left click</li>
+<li>高级查找：Find in Path <code>shift + cmd + f</code></li>
+<li>快速生成：Generate</li>
+<li>格式化：Reformay Code</li>
+<li>优化导入语句：Optimize imports</li>
+<li>谁调用了这个类：Call Hierarchy</li>
+<li>所有实现类（对接口使用）：Implementation</li>
+</ol>
+<h4 id="调试器"><a href="#调试器" class="headerlink" title="调试器"></a>调试器</h4><ol>
+<li>为什么需要调试器<ul>
+<li>理解程序执行的过程</li>
+<li>理解JVM的内部结构</li>
+<li></li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/06/02/Untitled/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/02/Untitled/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T17:18:27+08:00">
+                2019-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/05/30/Spring-Boot-minutes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/30/Spring-Boot-minutes/" itemprop="url">Spring-Boot minutes</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-30T21:45:46+08:00">
+                2019-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>Spring对于控制反转有两种方式</p>
+<ul>
+<li>一种是比较远古的用xml的方式，来进行声明</li>
+<li>第二种是通过annotation注解的方式进行声明</li>
+</ul>
+</li>
+<li><p>ORM（Object Relationship Mapping）</p>
+<ul>
+<li>JPA，不需要写SQL或者写很少SQL</li>
+<li>myBatis，需要写SQL</li>
+</ul>
+</li>
+<li><p>用MySQL的docker镜像</p>
+<p><code>docker pull mysql</code></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/05/29/Docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiaqi Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moonstone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/29/Docker/" itemprop="url">Docker</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-29T23:53:20+08:00">
+                2019-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>常用指令</p>
+<ul>
+<li><p>看本地有几个镜像</p>
+<p><code>docker image ls</code></p>
+</li>
+<li><p>看container</p>
+<p><code>dock container ls</code></p>
+</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/05/19/控制反转和依赖注入/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -323,10 +987,18 @@
       
         
           
-            <h4 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h4><p>Inversion of Control 是一种面向对象编程的一种设计原则，用来降低计算机代码之间的耦合度，比如：</p>
+            <h4 id="IOC容器"><a href="#IOC容器" class="headerlink" title="IOC容器"></a>IOC容器</h4><p>Inverse of Control(控制反转)</p>
+<h4 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h4><p>Inversion of Control 是一种面向对象编程的一种设计原则，用来降低计算机代码之间的耦合度，比如：</p>
 <p>A依赖于B，一种写法是在类A里面使用<code>new</code>创建一个类B的对象，这就是一般所说的<strong>A控制B的创建和销毁</strong></p>
 <p>而<em>控制反转</em>则是让A移交出这个创建权给A的外部，由外部（相对于A）<strong>控制B的创建与销毁</strong>。这样就实现了B的创建和生命周期逻辑和A的解耦。</p>
 <p>要思考封装和控制反转的微妙关系（一个是聚起来，一个是把创建逻辑分出去）。</p>
+<h4 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h4><p>通过”控制反转”， 我们把B的控制权转移到A的外部，但是A仍然依赖于B，需要使用B的对象完成一些事情，那么问题来了</p>
+<p><strong>我们如何把外部创建的B的对象交给A呢？</strong></p>
+<ul>
+<li>在A的构造方法里把B作为一个参数传给A — 更加清晰</li>
+<li>使用setter()方法把B传给A — 更加的灵活</li>
+</ul>
+<p>这其实就是所谓的<strong>依赖注入</strong>，依赖注入其实就是控制反转的一个实现，差不多也是同一回事</p>
 
           
         
@@ -951,858 +1623,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2019/01/02/抽象类和接口/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/02/抽象类和接口/" itemprop="url">抽象类和接口</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T00:24:19+08:00">
-                2019-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><ul>
-<li>目的就是用于继承之后定义子类的类，必然会用于定义子类</li>
-<li><strong>抽象类除了不能实例化对象之外</strong>，类的其他功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样</li>
-<li>由于抽象类不能实例化对象，<strong>所以抽象类必须被继承，才能被使用</strong></li>
-<li>使用修饰符<code>abstract</code>声明一个类似抽象类，一般具有抽象方法：<code>abstract void method();</code> 抽象方法只有声明，没有实现</li>
-<li>子类继承抽象类之后，<strong>必须实现抽象方法</strong>，不然仍然为抽象类，可以override其他方法</li>
-<li><code>static</code>方法不能声明为抽象方法</li>
-<li><code>is-a关系</code></li>
-</ul>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>抽象类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">NewsReader</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> News <span class="title">readNews</span><span class="params">(String path)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>继承的子类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UrlNewsReader</span> <span class="keyword">extends</span> <span class="title">NewsReader</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> News <span class="title">readNews</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        System.out.println(path);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><ul>
-<li>接口是一系列抽象方法（但不需要abstract修饰，隐式是public abstract）的集合</li>
-<li>语义上表示具有一定的特性，比如：<ul>
-<li>行走：但是没有如何行走的定义</li>
-<li>显示：表示可以显示，但是没有如何显示的定义</li>
-</ul>
-</li>
-<li>接口成员变量只能是<code>static final</code>的，因为它不是类，不能实例化对象，所以不会有状态，只有属性</li>
-<li>类通过关键字<code>implements</code>表达实现一个接口吗，从而<strong>声明</strong>这个类具有接口定义的属性和行为</li>
-<li>类可以实现多个接口！例如表示：一个文件即可以显示也可以打印</li>
-</ul>
-<h3 id="接口和抽象类的共同点"><a href="#接口和抽象类的共同点" class="headerlink" title="接口和抽象类的共同点"></a>接口和抽象类的共同点</h3><ol>
-<li>他们都是上层的抽象层</li>
-<li>都不能被实例化</li>
-<li>都能包含抽象的方法，这些抽象的方法用于描述类具备的功能，但是不提供具体的实现</li>
-</ol>
-<h3 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h3><ol>
-<li><p>在抽象类中可以写非抽象的方法，从而避免在子类中重复书写他们，这样可以提高代码的复用性，这是抽象类的优势；接口中只能写抽象的方法（在接口中写抽象方法可以省列<code>abstract</code>字段）</p>
-</li>
-<li><p>一个类只能<strong>继承一个直接父类</strong>，这个父类可以是具体的类也可以是抽象类；但是一个类可以<strong>实现多个接口</strong></p>
-<blockquote>
-<p>例如喵继承猫科动物类，汪继承犬科动物类，但是喵和汪想使用同样的方法<code>拆家</code>是无法实现的，因为类的继承是单继承。</p>
-<p>但如果猫科动物和犬科动物是接口那么久简单了，再写一个接口让喵和汪实现这个接口就可以使用<code>拆家</code>方法了</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
-<li>多态表示一个类型（父类或者接口）变量的方法的具体实现行为由变量指向的具体对象确定</li>
-<li>多态的存在有三个前提：<ol>
-<li>要有继承关系</li>
-<li>子类要重写父类的方法</li>
-<li>父类引用指向子类对</li>
-</ol>
-</li>
-<li>主要的实现方式<ul>
-<li>继承和接口</li>
-<li>父类和接口类型的变量赋值子类对象</li>
-<li>调用被override的方法</li>
-</ul>
-</li>
-</ul>
-<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><p>父类Animal：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> age = <span class="number">30</span>;</span><br><span class="line">    <span class="keyword">static</span> String name = <span class="string">"Animal"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Animal is running"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Animal is eating"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>子类Cat：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> age = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">static</span> String name = <span class="string">"Cat"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Cat is runing"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Cat is eating"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">seizeMouse</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Cat is seizing mouse"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Animal cat = <span class="keyword">new</span> Cat();</span><br><span class="line">        cat.run();</span><br><span class="line">        cat.eat();</span><br><span class="line">        System.out.println(cat.age);</span><br><span class="line">        System.out.println(cat.name);</span><br><span class="line">        System.out.println(<span class="string">"----------------------------"</span>);</span><br><span class="line">        Cat cat2 = (Cat) cat;</span><br><span class="line">        cat2.run();</span><br><span class="line">        cat2.eat();</span><br><span class="line">        cat2.seizeMouse();</span><br><span class="line">        System.out.println(cat2.age);</span><br><span class="line">        System.out.println(cat2.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上三段代码充分体现了多态的三个前提，即</p>
-<ol>
-<li><p>存在继承关系</p>
-<p><code>Cat</code>类继承了<code>Animal</code>类</p>
-</li>
-<li><p>子类要重写父类的方法</p>
-<p>子类重写（<code>override</code>）了父类的两个成员方法run(), eat()。其中run()是非静态的，eat()是静态的(<code>static</code>)</p>
-</li>
-<li><p>父类数据类型的引用指向子类对象</p>
-<p>测试类Main中Animal cat = new Cat()；语句在堆内存中开辟了子类(Cat)对象，并把占内存中的父类(Animal)的引用指向了这个Cat对象。</p>
-</li>
-</ol>
-<p>测试结果输出打印：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Cat is runing</span><br><span class="line">Animal is eating</span><br><span class="line">30</span><br><span class="line">Animal</span><br><span class="line">----------------------------</span><br><span class="line">Cat is runing</span><br><span class="line">Cat is eating</span><br><span class="line">Cat is seizing mouse</span><br><span class="line">5</span><br><span class="line">Cat</span><br></pre></td></tr></table></figure>
-<p>从结果可以看出：</p>
-<p><strong>子类Cat重写了父类Animal非静态方法run()，访问的结果为子类自身</strong></p>
-<p><strong>子类Cat重写了父类Animal静态方法eat()，访问的结果为父类自身</strong></p>
-<p><strong>多态无法访问子类特有的成员属性和子类特有的成员方法</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/12/25/Java封装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/25/Java封装/" itemprop="url">Java封装</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T14:12:12+08:00">
-                2018-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><ul>
-<li>在面向对象程序设计方法中，封装（Encapsulation）是指一种将类实现细节部分包装，隐藏起来的方法</li>
-<li>目的：<strong>对类的内部状态的访问进行控制，只提供该提供的信息</strong></li>
-<li>把代码分成两个部分：<strong>接口</strong>和<strong>实现</strong></li>
-<li>接口因为涉及和外部的交互，对用户暴露，<strong>应该保持稳定</strong>。例如API和库</li>
-<li>内部实现不需要暴露给外部用户，在街口功能不被影响的前提下，可以随意修改和重构</li>
-<li>良好的封装是解耦的基础！</li>
-</ul>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>继承是Java面向对象编程技术的一块基石，因为它允许创建分等级层次的类封装方式：类</p>
-<p>子类继承父类的特征和行为，使得子类对象具有父类对象的特征和方法</p>
-<p>继承需要符合一个关系：is-a.子类是更具体的父类</p>
-<p>在声明子类的时候，通过关键字<code>extends</code>表达继承</p>
-<ul>
-<li><p>继承特性</p>
-<ul>
-<li>子类拥有父类非private的成员变量和方法</li>
-<li>子类可以拥有有自己的成员变量和方法，即子类可以对父类进行扩展</li>
-<li>子类可以重新实现此类的方法，<code>override</code></li>
-<li>Java只支持单继承，即只能有一个父类</li>
-<li>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类</li>
-<li>this关键字：指向自己的引用</li>
-</ul>
-</li>
-<li><p>构造方法</p>
-<ul>
-<li>子类不能继承父类的构造器（构造方法或者构造函数），如果父类的构造器带有参数，则必须在子类的构造器中显式地通过super关键字调用父类的构造器并配以适当的参数列表。</li>
-<li>如果父类构造器没有参数，则在子类的构造器中不需要使用super关键字调用父类构造器，系统会自动调用父类的无参构造器</li>
-</ul>
-</li>
-<li><p>举例</p>
-<ul>
-<li><p>父类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> String name;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> age;</span><br><span class="line">    Father()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    Father(String name, <span class="keyword">int</span> age)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.name + <span class="string">" is eating "</span> + food);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>子类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">    Child()&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    Child(String name, <span class="keyword">int</span> age)&#123;</span><br><span class="line">        <span class="keyword">super</span>(name, age);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.name + <span class="string">" is plan to eat "</span> + food);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/12/23/IO和流/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/23/IO和流/" itemprop="url">IO和流</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-23T11:53:30+08:00">
-                2018-12-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>I/O和流</p>
-<ul>
-<li>I/O是Input和Output的缩写</li>
-<li>从读写设备，包括硬盘文件，内存，键盘输入，屏幕输出，网路</li>
-<li>输入输出“内容”（字节或文本）</li>
-<li>流是对输入输出设备的一种<strong>抽象</strong></li>
-<li>从流中读取内容，输出内容到流中</li>
-<li>“Linux中一切都是文件”</li>
-<li>从程序的角度，就是对读写设备进行封装，比如：创建一个对象，然后调用方法读取（输出）内容，然后对象会更新当前文件的位置</li>
-</ul>
-<p>标准输出流</p>
-<ul>
-<li><code>System.out;</code></li>
-<li><code>System.out.println(...);</code></li>
-</ul>
-<p>标准输入流</p>
-<ul>
-<li><code>System.in</code></li>
-</ul>
-<p>字节流</p>
-<ul>
-<li><code>InputStream</code><ul>
-<li><code>System.in</code></li>
-<li><code>FileInputStream</code></li>
-</ul>
-</li>
-<li><code>OutputStream</code><ul>
-<li><code>System.out</code></li>
-<li><code>FileOutputStream</code></li>
-</ul>
-</li>
-<li><code>BufferedInputStream</code>和<code>BufferedOutputStream</code></li>
-<li><code>Stream</code>用于直接处理<strong>“字节”</strong></li>
-</ul>
-<p>字符流</p>
-<ul>
-<li><code>Reader</code><ul>
-<li><code>InputStreamReader</code><ul>
-<li><code>FileReader</code></li>
-</ul>
-</li>
-<li><code>BufferedReader</code><ul>
-<li><code>bufferedReader.readline();</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>Writer</code><ul>
-<li><code>OutputStreamWriter</code><ul>
-<li><code>FileWriter</code></li>
-</ul>
-</li>
-<li><code>BufferedWriter</code><ul>
-<li><code>bufferedWriter.write(String);</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>IOUtils</p>
-<ul>
-<li>IOUtils是Apache开源项目的一个很广泛使用的IO工具库</li>
-<li>主要提供更抽象程度IO放翁红菊，方便些IO相关的代码</li>
-<li>常用类<ul>
-<li>FileUtils</li>
-<li>Charset</li>
-<li>DirectoryWalker</li>
-<li>copyUtils</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/12/21/Java修饰符/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/21/Java修饰符/" itemprop="url">Java修饰符</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-21T22:22:15+08:00">
-                2018-12-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>修饰符用于控制变量，类的作用与喝一些访问限制</p>
-<ol>
-<li><p>访问权限修饰符： <code>public</code>, <code>protected</code>, <code>private</code>, <code>default(即不设置)</code></p>
-<p>一般把成员变量设置为<code>private</code>，用<code>get</code>和<code>set</code>函数去访问修改这个成员变量</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>public</th>
-<th>protected</th>
-<th>default</th>
-<th>private</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>同一个类</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>同一个包</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>子父类</td>
-<td>Y</td>
-<td>Y</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>不同包</td>
-<td>Y</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li><code>static</code>: 把方法或者成员变量设置为类共享</li>
-</ol>
-<p>具有<code>static</code>修饰的方法和变量的类，我们称之为“静态类”</p>
-<p>调用方法：&lt;类名&gt;.&lt;方法名或成员变量名&gt;</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello, world"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用：</span></span><br><span class="line">Main.main(<span class="keyword">null</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>final</code><ul>
-<li><code>final&lt;类&gt;;</code> —防止类被继承</li>
-<li><code>final&lt;变量&gt;;</code> —防止变量被修改引用到另外一个对象，可称为“常量”<ul>
-<li>思考： 常量指向的<strong>对象</strong>能否被修改？</li>
-<li>是可以的，因为它只是防止修改引用</li>
-</ul>
-</li>
-<li><code>final&lt;方法&gt;;</code> —防止方法被重载</li>
-<li><code>final</code>成员变量必须在生命时候初始化，或者在构造函数中初始化！！</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangjq.net/2018/12/20/Git相关/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jiaqi Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moonstone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/20/Git相关/" itemprop="url">Git相关</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T13:49:08+08:00">
-                2018-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><code>git merge</code>是将目标branch和当前branch合并</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1853,7 +1673,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
