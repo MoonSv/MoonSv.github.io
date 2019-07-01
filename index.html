@@ -323,9 +323,7 @@
       
         
           
-            <ol>
-<li><p>数据类型</p>
-<ol>
+            <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ol>
 <li><p>原生数据类型和引用数据类型(对象)</p>
 <ul>
 <li>原生数据类型永远是数据本身</li>
@@ -341,9 +339,33 @@
 <li><p>另外一个坑，整数除法是地板除</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a / b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">psvm()&#123;</span><br><span class="line">  sout(divide(<span class="number">3</span>, <span class="number">2</span>)) <span class="comment">// Oops, result = 1.0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以修改成</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1.0</span> * a / b; <span class="comment">// 这里会发生变量提升，提升到精度更高的级别</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
+<li><p>所有原生数字类型在声明时就会有默认的<strong>初始值</strong>，引用类型也有默认的<strong>初始值</strong>，值为null</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a; <span class="comment">// -&gt; int a = 0;</span></span><br><span class="line"><span class="keyword">double</span> b; <span class="comment">// -&gt; double b = 0d;</span></span><br><span class="line"><span class="keyword">float</span> c; <span class="comment">// -&gt; float c = 0f;</span></span><br><span class="line"></span><br><span class="line">String name; <span class="comment">// -&gt; String name = null;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><ol>
+<li>对象的生命周期</li>
+</ol>
+<h2 id="访问控制符"><a href="#访问控制符" class="headerlink" title="访问控制符"></a>访问控制符</h2><ul>
+<li>public 任何人都能访问</li>
+<li>protected 只有字类可以访问和同一个包的可以访问</li>
+<li>package private 只有同一个包的类可以访问</li>
+<li>private 只有自己可以访问</li>
+</ul>
+<h1 id="设计者模式"><a href="#设计者模式" class="headerlink" title="设计者模式"></a>设计者模式</h1><h2 id="静态工厂设计模式"><a href="#静态工厂设计模式" class="headerlink" title="静态工厂设计模式"></a>静态工厂设计模式</h2><ol>
+<li><p>最重要的特征和优点是静态工厂构造器可以是<strong>有名字</strong>的，即可以通过名字来判断改构造方法是做什么的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Cat <span class="title">newCuteCat</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">  <span class="comment">// 第一个参数是名字，那二个布尔参数表示是否是萌猫</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Cat(name, <span class="keyword">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以返回当前声明类型的<strong>子类型</strong></p>
+</li>
+<li><p>如果使用静态工厂方法代替构造器，就先将<strong><em>原有构造器私有化</em></strong>（让所有人必须通过静态工厂来创建对象，实际上是一个<strong>封装</strong>的表现）</p>
+</li>
+</ol>
+<h2 id="Builder-模式"><a href="#Builder-模式" class="headerlink" title="Builder 模式"></a>Builder 模式</h2><p>有时一个类可能有成百上千个参数，所以当构造这个类的时候会因为参数太多而不知道所传入的参数对应的是什么，造成参数的误传。这个时候就可以使用builder模式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserBuilder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String firstName;</span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="keyword">private</span> String phoneNumber;</span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserBuilder <span class="title">firstName</span><span class="params">(String firstName)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserBuilder <span class="title">lastName</span><span class="params">(String lastName)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserBuilder <span class="title">phoneNumber</span><span class="params">(String phoneNumber)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.phoneNumber = phoneNumber;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserBuilder <span class="title">address</span><span class="params">(String address)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.address = address;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">build</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User(firstName, lastName, phoneNumber, address);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Builder可以使用<code>command + n</code>来自动构建</p>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>继承的本质是避免重复</p>
+<h2 id="equals"><a href="#equals" class="headerlink" title=".equals()"></a>.equals()</h2><p>因为每个类都会单边继承<code>Object</code>类，所以每个类会拥有Object类中的<code>.equals()</code>方法</p>
 
           
         
